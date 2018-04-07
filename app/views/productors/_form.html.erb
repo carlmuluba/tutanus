@@ -1,0 +1,17 @@
+<%= form_with(model: productor, local: true) do |form| %>
+  <% if productor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(productor.errors.count, "error") %> prohibited this productor from being saved:</h2>
+
+      <ul>
+      <% productor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
