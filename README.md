@@ -32,7 +32,7 @@ Things you may want to cover:
 * git push heroku master
 * heroku run rake db:migrate
 
-* https://tutanus.herokuapp.com/
+* (https://tutanus.herokuapp.com/)
 
 * Postgres 
 * psql -d tutanus_development -U postgres -W
@@ -40,7 +40,11 @@ Things you may want to cover:
 
 * Carriewave
 * Multiple Images Uploading With CarrierWave and PostgreSQL Array
-* http://bobintornado.github.io/rails/2015/12/29/Multiple-Images-Uploading-With-CarrierWave-and-PostgreSQL-Array.html
+* (http://bobintornado.github.io/rails/2015/12/29/Multiple-Images-Uploading-With-CarrierWave-and-PostgreSQL-Array.html)
+
+* //cloudinary.com 
+* (https://github.com/Vitalijus/multiple-file-upload-with-carrierwave-to-cloudinary
+)
 
 * Uploading With Rails and Carrierwave
-* https://code.tutsplus.com/articles/uploading-with-rails-and-carrierwave--cms-28409
+* (https://code.tutsplus.com/articles/uploading-with-rails-and-carrierwave--cms-28409)
