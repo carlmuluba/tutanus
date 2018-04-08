@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :projects  do
       resources :images, :only => [:create, :destroy]
   end
+  resources :activities  do
+      resources :images, :only => [:create, :destroy]
+  end
   resources :partners
   resources :publications
   resources :activities

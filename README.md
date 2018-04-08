@@ -27,6 +27,11 @@ Things you may want to cover:
 * RAILS 5.1.6
 
 * HEROKU DEPLOYMENT
+* git commit -a (VIM o - Esc - :wq)
+* git status
+* git push heroku master
+* heroku run rake db:migrate
+
 * https://tutanus.herokuapp.com/
 
 * Postgres 

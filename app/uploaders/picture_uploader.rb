@@ -1,7 +1,8 @@
 class PictureUploader < CarrierWave::Uploader::Base
+  include Cloudinary::CarrierWave
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-   include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -34,15 +35,26 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
    version :medium do
-     process resize_to_fit: [500, 400]
+     process resize_to_fill: [500, 400]
    end
 
    version :thumb do
-     process resize_to_fit: [250, 200]
+     process resize_to_fill: [250, 200]
    end
    version :small_thumb, from_version: :thumb do
-     process resize_to_fit: [100, 100]
+     process resize_to_fill: [100, 100]
    end
+
+   #version :medium do
+   #  process resize_to_fit: [500, 400]
+   #end
+
+   #version :thumb do
+   #  process resize_to_fit: [250, 200]
+   #end
+   #version :small_thumb, from_version: :thumb do
+   #  process resize_to_fit: [100, 100]
+   #end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
