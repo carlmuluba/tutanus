@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multiple Pics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Activity</th>
+      <th>Productor</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multiple_pics.each do |multiple_pic| %>
+      <tr>
+        <td><%= multiple_pic.project_id %></td>
+        <td><%= multiple_pic.activity_id %></td>
+        <td><%= multiple_pic.productor_id %></td>
+        <td><%= multiple_pic.image %></td>
+        <td><%= link_to 'Show', multiple_pic %></td>
+        <td><%= link_to 'Edit', edit_multiple_pic_path(multiple_pic) %></td>
+        <td><%= link_to 'Destroy', multiple_pic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multiple Pic', new_multiple_pic_path %>

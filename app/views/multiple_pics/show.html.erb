@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @multiple_pic.project_id %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @multiple_pic.activity_id %>
+</p>
+
+<p>
+  <strong>Productor:</strong>
+  <%= @multiple_pic.productor_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @multiple_pic.image %>
+</p>
+
+<%= link_to 'Edit', edit_multiple_pic_path(@multiple_pic) %> |
+<%= link_to 'Back', multiple_pics_path %>

@@ -1,15 +1,44 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+  # GET /projects ::: START PAGE
+  # GET /projects.json
+def start
+    #@projects = Project.all()  
+    offset = 12
+    @projects = Project.limit(offset).order("RANDOM()")  
+
+end
+
+  # GET /projects ::: BY PARAMS
+  # GET /projects.json
+def search
+
+   if params[:term]
+    @projects = Project.where( "proj_kind = ?", params[:term]).order("RANDOM()")
+    render 'index'
+  end
+
+  end
+
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    #@projects = Project.all  
+   if params[:term]
+    @projects = Project.where( "proj_kind = ?", params[:term]).order("RANDOM()")
+     # @images = @project.images.all
+  else
+    offset = Project.count
+    @projects = Project.limit(offset).order("RANDOM()")
+     # @images = @project.images.all
+  end
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+
   end
 
   # GET /projects/new
@@ -27,9 +56,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
+      if @project.save 
+        format.html { redirect_to edit_project_path(@project.id), notice: 'Project was successfully created.' }
+        format.json { render :show, status: :created, location: edit_project_path(@project.id) }
       else
         format.html { render :new }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -69,6 +98,10 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.fetch(:project, {})
+      #params.fetch(:project, {})
+            params.require(:project).permit(:id, :proj_title, :proj_kind, :proj_about, :proj_startdate, :proj_enddate, {images: []}) 
+         #team_attributes: [:id, :name, :picture, :joined_date, :remove_picture, :picture_cache, :project_id, :picture_cache ], 
+         #collections_attributes: [:id, :title, :picture, :about, :project_id, :team_id, :professional_id, :picture_cache])
+    
     end
 end

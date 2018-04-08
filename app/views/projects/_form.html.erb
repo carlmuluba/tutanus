@@ -1,17 +1,34 @@
-<%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<div class="uk-height-auto">
+<%= form_with model: @project, local: true do |form| %>
 
-      <ul>
-      <% project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <div uk-form-custom="target: true">
+    <%= form.file_field :images, multiple: true %>
+            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select images" disabled>        
+        </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="uk-margin">
+    <%= form.select( :proj_kind, ['Project Type',['Branding'],['Film and Commercial'],['Digital'],['Environmental'],['Print'],['Packinging'],['Product'],['Social']],{}, { class: 'uk-input uk-child-width-1-1'}) %>  
+  </div>
+  <div class="uk-margin">    
+    <%= form.text_field :proj_title, id: :project_title, class: "uk-input uk-text-capitalize", placeholder: :project_title %>
+  </div>
+    
+  <div class="uk-margin">    
+    <%= form.text_area :proj_about, id: :project_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
+</div>
+  <div class="uk-margin cst_select">    
+    <%= form.date_select :proj_startdate, id: :project_start_date, class: "" %>
+    <%= form.label :start_date %>
+
+  </div>
+
+  <div class="uk-margin cst_select">
+    <%= form.date_select :proj_enddate, id: :project_end_date, class: "" %>
+    <%= form.label :end_date %>
+  </div>
+
+  <div class="uk-margin">
+    <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
   </div>
 <% end %>
+</div>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :projects  do
+      resources :images, :only => [:create, :destroy]
+  end
+  resources :partners
+  resources :publications
+  resources :activities
   resources :productors
   resources :collections
   resources :teams
@@ -11,5 +17,5 @@ Rails.application.routes.draw do
   #end
 
 # PROJECTS STUFF
-  root to: 'projects#index'
+  root to: 'projects#start'
 end

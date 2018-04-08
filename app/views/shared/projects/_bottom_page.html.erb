@@ -1,0 +1,19 @@
+</div>
+</div>
+<!-- #END PROJECTS CONTAINER -->
+
+<script type="text/javascript">
+    $(function() {
+      if ('<%= params[:link] %>'== 0) {
+    $('#all').addClass('cst-active');
+} else {
+    $('#<%= params[:link] %>').addClass('cst-active');
+  }
+  
+      if ('<%= params[:pg] %>'== 0) {
+    $('#projects').addClass('cst-active-no-line');
+} else {
+    $('#<%= params[:pg] %>').addClass('cst-active-no-line');
+  }
+    });
+</script>

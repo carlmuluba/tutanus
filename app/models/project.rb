@@ -5,4 +5,6 @@ class Project < ApplicationRecord
 	has_many :productors
 	has_many :professionals, :through => :teams
 	has_many :activities, :through => :teams
+	mount_uploaders :images, PictureUploader # mount the uploaders
+	#validates :proj_pics, file_size: { less_than: 1.megabytes }
 end

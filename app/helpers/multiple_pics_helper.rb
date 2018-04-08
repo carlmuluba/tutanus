@@ -1,0 +1,2 @@
+module MultiplePicsHelper
+end

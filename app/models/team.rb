@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
 	belongs_to :project
-	#has_many :professionals
-	#has_many :activities
+	belongs_to :professionals
+	belongs_to :activities
 end

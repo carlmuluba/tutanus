@@ -1,0 +1,20 @@
+ <% if @teams.empty? %>
+    <div class="uk-text-center uk-width-1-1 uk-height-small">
+      <h3 class="uk-light">No teams available</h3>
+    </div>
+    <% else %>
+<!-- #START DIPLAY LIST -->
+    <% @teams.each do |team| %>
+    <%= link_to team, class: "uk-link-muted" do %>
+    <div class="uk-margin-small-left" uk-grid>
+    <div class="uk-height-small uk-width-small" style="overflow: hidden; background: url('<%= team.tm_pic.thumb.url %>') no-repeat center center; background-size: cover;">
+    </div>
+            <div class="uk-width-expand uk-light" style="overflow: hidden;">
+    <h3 class="uk-card-title uk-margin-remove-bottom uk-text-capitalize"><%= team.tm_name %></h3>
+    <p class="uk-text-meta uk-margin-remove-top">project <%= team.project_id %></p>       </div>
+        </div>               
+        <hr class="uk-list-divider uk-margin-remove-bottom uk-margin-small-left uk-margin-small-right">
+    <% end %>
+    <% end %>
+<!-- #END DISPLAY LIST-->
+    <% end %>

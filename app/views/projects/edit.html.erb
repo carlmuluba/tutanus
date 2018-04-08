@@ -1,6 +1,63 @@
-<h1>Editing Project</h1>
+<div class="uk-container uk-container- uk-align-center"> 
+<p class="uk-heading-primary uk-text-muted">Editing Project - <%= @project.proj_title %></p>
+<div class="uk-card uk-card-default uk-padding">
+<div uk-switcher="animation: uk-animation-fade">
+    <button class="uk-button uk-button-secondary" type="button">Project Edit</button>
+    <button class="uk-button uk-button-secondary" type="button">Manage Images</button>
+<!-- #IF NO TEAM FOR PROJECT CONDITION -->
+    <% if @project.team.nil? %>
+    <button class="uk-button uk-button-secondary" type="button">Add a Team</button>
+    <% else %>
+    <button class="uk-button uk-button-secondary" type="button">Edit Team</button>
+    <% end %>
+<!-- #END IF NO TEAM CCONDITION -->
+<!-- #IF NO COLLECTION FOR PROJECT CONDITION -->
+    <% if @project.collections %>
+    <button class="uk-button uk-button-secondary" type="button">Add Collection</button>
+    <% else %>
+    <button class="uk-button uk-button-secondary" type="button">Edit Collections</button>
+    <% end %>
+<!-- #END IF NO COLLECTION CONDITION -->
+</div> 
 
+<ul class="uk-switcher uk-margin">
+<!-- #START PROJECT FORM -->
+    <li>
+<div class="uk-column-1-1">
 <%= render 'form', project: @project %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+</div>
+</li>
+<!-- #START PICTURE FORM -->
+    <!--li>
+<div class="uk-height uk-padding-large uk-padding-remove-top uk-padding-remove-horizontal">
+< %= render 'pic_form' %>
+</div>
+</li-->
+<!-- #START TEAM FORM -->
+    <li>
+<div class="uk-height uk-padding-large uk-padding-remove-top uk-padding-remove-horizontal">
+<%= render 'projects/teams_stuff/teams_form', project: @project %>
+</div>
+</li>
+<!-- #START COLLECTIONS FORM -->
+    <li>
+    <% if @project.collections %>
+    <div class="uk-height-viewport">
+<%= render 'projects/collections_stuff/collections_form', project: @project %>
+</div>
+    <% else %>
+    <%= link_to "Collections", project_collections_path(@project), class: "uk-button uk-button-secondary", type: "button" %>
+    <% end %>
+</li>
+<!-- #END FORMS -->
+</ul>
+</div>
+<div class="uk-text-center uk-margin-medium-top">
+<%= link_to :back do %>
+ <span uk-icon="icon: arrow-left; ratio: 2"></span> 
+ <% end %>
+ |
+<%= link_to @project do %> 
+ <span uk-icon="icon: album; ratio: 2"></span> <% end %>
+</div>
+</div>

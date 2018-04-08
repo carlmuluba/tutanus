@@ -1,4 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+ <%= render "shared/projects/topnav_fixed" %>
+  <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove-top">
+   <%= @project.proj_title %>
+  </h5>
+<div class="uk-margin-small-left uk-margin-small-right">
+  <div class="uk-column-1-2@s uk-column-divider uk-margin-medium-bottom uk-margin-medium-top">
+<p class="uk-dropcap "><%= @project.proj_about %></p>
+</div>
+</div>
+<!-- #START IMAGES DISPLAY GRID --->
+<div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
+    <div class="uk-grid-small uk-margin-small uk-child-width-1-3@s uk-text-center" uk-grid uk-lightbox="animation: scale">
+    <% @project.images.each do |pic| %>
+    <div class="uk-cover-container">
+  <%= link_to pic.url, class: "" do %>
+          <div class="uk-height-small uk-width" style="overflow: hidden; background: url('<%= pic.medium.url %>') no-repeat center center; background-size: cover;height: 250px;" >
+<!-- %= image_tag( pic.medium.url, class: "uk-inline", caption: @project.title,) if @project.pics? %-->
+</div>
+  <% end %>
+</div>
+<% end %>
+  </div>
+<!-- #END IMAGES DISPLAY GRID --->
+<p class="uk-text-center">
+  <%if @project.proj_startdate.blank? || @project.proj_enddate.blank? %>
+  <% else %>
+      released between <%= @project.proj_startdate %> and <%= @project.proj_enddate %>
+ <% end %>
+</p>
+</div>
+<!-- #END IMAGES DISPLAY GRID --->
+<!-- #START TEAM STUFF --->
+<% if @project.team.nil? %>
+<div class="uk-background-muted uk-height-auto uk-padding-small uk-margin-medium-top uk-clearfix">
+<div class="uk-column-1-2@s uk-margin-small-top">
+<%= link_to projects_path, class: "uk-padding-small uk-margin-auto-right uk-margin-auto-left uk-padding-remove-bottom" do %>
+<div>
+<span uk-icon="icon: album; ratio: 2;"></span> All Projects
+</div>
+<% end %>
+</div>
+</div>
+<% else %>
+<div class="uk-background-muted uk-height-auto uk-padding-small uk-clearfix uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+<div class="">
+  <%= link_to team_path(@project.team), class: "uk-link-text" do %>
+<div class="uk-child-width-expand@s">
+<%= image_tag( @project.team.picture.small_thumb.url,  alt: 'Team', style: "width: 80px;") if @project.team.picture? %>
+  <span class="uk-text-lead uk-text-capitalize"><%= @project.team.name %> </span>
+</div>
+<% end %> 
+</div>
+  <div class="uk-margin-auto-left uk-margin-auto-right">
+      <ul class="uk-iconnav">
+<%= link_to projects_path do %>
+ <li uk-icon="icon: arrow-left; ratio: 2"></li> 
+ <% end %>
+<%= link_to edit_project_path(@project) do %> 
+ <li uk-icon="icon: file-edit; ratio: 2"></li> 
+ <% end %>
+<%= link_to @project, method: :delete, data: { confirm: 'Are you sure?' } do %>
+ <li uk-icon="icon: trash; ratio: 2"></li> 
+ <% end %>
+</ul>
+</div>
+</div>
+<% end %>
+<!-- #END TEAM STUFF --->
+ <%= render "shared/projects/bottom_page" %>

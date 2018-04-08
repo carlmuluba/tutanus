@@ -1,0 +1,48 @@
+<div class="uk-padding-small uk-padding-remove-top" style="margin-top: -20px;">
+    <ul class="uk-flex-left uk-subnav uk-margin-remove-bottom uk-margin-remove-top" >
+    	<li id="all" class="">
+<%= link_to projects_path( link: :all) do %> 
+     All
+<% end %>
+</li>
+        <li id="branding" class="">
+<%= link_to  projects_path( term: :Branding, link: :branding ) do %> 
+     Branding
+<% end %>
+</li>
+        <li id="filmandcommercial" class="">
+<%= link_to projects_path( :term => 'Film and Commercial', link: :filmandcommercial ) do %> 
+     Film and Commercial
+<% end %>
+</li>
+        <li id="digital"class="">
+<%= link_to projects_path( term: :Digital, link: :digital ) do %> 
+     Digital
+<% end %>
+</li>
+        <li id="environmental" class="">
+<%= link_to projects_path( term: :Environmental, link: :environmental ) do %> 
+     Environmental
+<% end %>
+</li>
+        <li id="print" class="">
+<%= link_to projects_path( term: :Print, link: :print ) do %> 
+     Print
+<% end %>
+</li>
+        <li id="packinging" class="">
+<%= link_to projects_path( term: :Packinging, link: :packinging ) do %> 
+     Packinging
+<% end %>
+</li>
+        <li id="products" class="">
+<%= link_to projects_path( term: :Products, link: :products ) do %> 
+     Products
+<% end %>
+        <li id="social" class="">
+<%= link_to projects_path( term: :Social, link: :social ) do %> 
+     Social
+<% end %>
+</li>
+    </ul>
+</div>
