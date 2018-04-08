@@ -9,7 +9,7 @@
 <!-- #START EACH PROJECT -->
     <% @projects.each do |project| %>
     <script type="text/javascript">
-  var ImageArray = [<% project.images.each do |pic| %>'<%= pic.medium.url %>',<% end %> ];
+  var ImageArray = [<% project.images.each do |pic| %>'<%= pic.url %>',<% end %> ];
 $( "<style type=\'text/css\'>div.bg-img_<%= project.id %> { background:  url(" + ImageArray[Math.floor(Math.random() * ImageArray.length)] + ") no-repeat center center; background-size: cover; background-color: #f8f8f8; }</style>").appendTo( "head" );
 </script>
 <!-- #START CONTENT LINK -->
