@@ -1,0 +1,19 @@
+#---
+development:
+  cloud_name: dasilvacloudi
+  api_key: '788271938247248'
+  api_secret: qDoZONYMx7joCFKKOMiRFNY2rTE
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dasilvacloudi
+  api_key: '788271938247248'
+  api_secret: qDoZONYMx7joCFKKOMiRFNY2rTE
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dasilvacloudi
+  api_key: '788271938247248'
+  api_secret: qDoZONYMx7joCFKKOMiRFNY2rTE
+  enhance_image_tag: true
+  static_image_support: false
