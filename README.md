@@ -25,7 +25,9 @@ Things you may want to cover:
 
 * RUBY 2.5.1 (rvmrc ruby-2.5.1@tutanus)
 * RAILS 5.1.6
+
 * HEROKU DEPLOYMENT
+* https://tutanus.herokuapp.com/
 
 * Postgres 
 * psql -d tutanus_development -U postgres -W
