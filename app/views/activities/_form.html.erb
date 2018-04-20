@@ -1,3 +1,4 @@
+<div class="uk-height-auto">
 <%= form_with(model: activity, local: true) do |form| %>
   <% if activity.errors.any? %>
     <div id="error_explanation">
@@ -10,8 +11,35 @@
       </ul>
     </div>
   <% end %>
+ 
+  <div class="uk-margin">
+  <div class="uk-margin">    
+    <%= form.text_field :act_name, id: :act_name, class: "uk-input uk-text-capitalize", placeholder: :activity_name %>
+  </div>
+    
+  <div class="uk-margin">    
+    <%= form.text_area :act_about, id: :act_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="uk-margin cst_select">
+    <%= form.date_field :act_date, id: :act_date, class: "uk-input uk-medium" %>
+    <%= form.label :date %>
+  </div>
+
+  <div class="uk-margin cst_select">    
+    <%= form.text_field :act_address, id: :act_address, class: "uk-input uk-text-capitalize", placeholder: :address %>
+
+  </div>
+
+  <div class="uk-margin cst_select">
+    <%= form.text_field :act_lat, id: :act_lat, class: "uk-input uk-text-capitalize", placeholder: :latitude %>
+  </div>
+
+  <div class="uk-margin cst_select">
+    <%= form.text_field :act_lat, id: :act_long, class: "uk-input uk-text-capitalize", placeholder: :longitude %>
+  </div>
+  <div class="uk-margin">
+    <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
   </div>
 <% end %>
+</div>

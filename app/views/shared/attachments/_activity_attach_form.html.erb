@@ -1,0 +1,37 @@
+   <!-- @START THUMBS VIEW -->
+   <div class="uk-child-width-1-1"> 
+<ul class="uk-thumbnav uk-child-width-1-4 uk-margin-medium-top" uk-margin>
+                  <% if @activity.activity_attachments.empty? %>
+                    <h5 id="no-media">No Images Found</h5>
+                  <% else %>
+                    <% @activity.activity_attachments.each do |aa| %>
+                      <li class="uk-text-center">
+                          <%= image_tag aa.image.url, class: "uk-thumbnail", width: 100 %>
+                            
+          <%= link_to activity_attachment_path(aa.id), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } do %>
+          <span uk-icon="icon: close; ratio: 2;" style="color: red;"><span>
+          <% end %>
+    </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+</div>
+<!-- @END THUMBS VIEW -->
+<div class="uk-margin-medium-top">
+  <p style="color: grey;">Add Images</p>
+<%= form_with model: @activity, local: true do |f| %>  
+
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+   <%= f.fields_for :activity_attachments, ProjAttachment.new do |fa| %>
+  <div class="uk-margin fallback uk-align-right" uk-margin>
+        <div uk-form-custom="target: true">
+       <%= fa.file_field :image, multiple: true, name: "activity[activity_attachments_attributes][][image]"  %>
+            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select files" disabled>        
+        </div>
+   <% end %>
+   <div class="actions">
+    <%= f.submit :upload, class: "uk-button uk-button-primary" %>
+   </div>
+<% end %>
+</div>
+</div>

@@ -1,0 +1,42 @@
+
+<div class="uk-child-width-1-1">
+	<% if @project.projimages? %>
+<ul class="uk-thumbnav uk-child-width-1-4 uk-margin-medium-top" uk-margin>
+    <% @project.projimages.each_with_index do |pic, index| %>
+    <li class="uk-text-center">
+       <%= image_tag(pic.url, class: "uk-thumbnail", width: 100) %>
+          <%= link_to project_projimages_path(@project, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } do %>
+          <span uk-icon="icon: close; ratio: 2;" style="color: red;"><span>
+          <% end %>
+    </li>
+      <% end %>
+    </ul>
+    <% end %>
+</div>
+
+<div class="uk-margin-medium-top">
+  <p style="color: grey;">Add Images</p>
+<!--%= form_with model: @project, local: true, multipart: true, class: "dropzone" do |f| %-->  
+<%= form_with scope: @project, url: project_projimages_path(@project), method: :post, class: "dropzone" do |f| %>  
+
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+   <!--%= f.fields_for :proj_attachments do |patt| %-->
+  <div class="uk-margin fallback uk-align-right" uk-margin>
+        <div uk-form-custom="target: true">
+          <!--% if @direct_mode %-->
+       <!--%= f.cl_upload(:proj_imgs, multiple: true )  %-->
+       <!--% else %-->
+       <%= f.file_field :projimages, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
+       <!--% end %-->
+            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select new files" disabled>        
+        </div>
+               <!--%= f.hidden_field :project_id, value: @project %-->
+   <!--% end %-->
+
+   <div class="actions">
+    <!--%= f.submit :upload, class: "uk-button uk-button-primary" %-->
+   </div>
+<% end %>
+</div>
+</div>
+

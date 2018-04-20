@@ -19,12 +19,6 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# CarrierWave
-gem 'carrierwave', '~> 1.0'
-# gem "mini_magick"
-
-gem 'cloudinary'
-
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -35,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'dropzonejs-rails', '~> 0.8.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -55,6 +49,17 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+gem 'spring'                    #images stuff 
+#gem 'paperclip'                #images stuff
+#gem 'paperclip-cloudinary'     #images stuff
+# CarrierWave                   #images stuff
+ gem 'carrierwave' #, '~> 1.0'  #images stuff 
+# gem 'carrierwave-dropbox'#    #images stuff      
+# gem "mini_magick"             #images stuff 
+#gem 'carrierwave-dropbox'      #images stuff  
+ gem 'cloudinary'               #images stuff
+#gem 'fog-aws'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

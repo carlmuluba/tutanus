@@ -28,6 +28,9 @@ class ProductorsController < ApplicationController
 
     respond_to do |format|
       if @productor.save
+       params[:productor_attachments]['image'].each do |a|
+         @produtor_attachments = @productor.produtor_attachments.create!(:image => a,     :produtor_id => @produtor.id)
+       end
         format.html { redirect_to @productor, notice: 'Productor was successfully created.' }
         format.json { render :show, status: :created, location: @productor }
       else

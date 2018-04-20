@@ -28,6 +28,9 @@ class PartnersController < ApplicationController
 
     respond_to do |format|
       if @partner.save
+       params[:partner_attachments]['image'].each do |a|
+         @partner_attachments = @partner.partner_attachments.create!(:image => a,     :partner_id => @partner.id)
+       end
         format.html { redirect_to @partner, notice: 'Partner was successfully created.' }
         format.json { render :show, status: :created, location: @partner }
       else

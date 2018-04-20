@@ -1,0 +1,16 @@
+default: &default
+
+development:
+  <<: *default
+  app_key: 'wph9j56nneelq4f'
+  api_secret: 'wwqe2uiff7t6tms'
+
+production: &production
+  <<: *default
+  api_key: 'wph9j56nneelq4f'
+  api_secret: 'wwqe2uiff7t6tms'
+
+test: &test
+  <<: *default
+  api_key: 'wph9j56nneelq4f'
+  api_secret: 'wwqe2uiff7t6tms'

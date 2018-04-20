@@ -1,0 +1,2 @@
+module ProjAttachmentsHelper
+end

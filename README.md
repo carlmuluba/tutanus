@@ -36,7 +36,9 @@ Things you may want to cover:
 
 * Postgres 
 * psql -d tutanus_development -U postgres -W
+* \d+ "proj_pictures"
 * TABLE projects 
+* rails db:schema:dump (load database from server)
 
 * Carriewave
 * Multiple Images Uploading With CarrierWave and PostgreSQL Array

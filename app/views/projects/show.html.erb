@@ -4,20 +4,25 @@
   </h5>
 <div class="uk-margin-small-left uk-margin-small-right">
   <div class="uk-column-1-2@s uk-column-divider uk-margin-medium-bottom uk-margin-medium-top">
-<p class="uk-dropcap "><%= @project.proj_about %></p>
+<p class="uk-dropcap ">
+  <%= @project.proj_about %>
+  </p>
 </div>
 </div>
 <!-- #START IMAGES DISPLAY GRID --->
 <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
     <div class="uk-grid-small uk-margin-small uk-child-width-1-3@s uk-text-center" uk-grid uk-lightbox="animation: scale">
-    <% @project.images.each do |pic| %>
+      <% if @project.proj_attachments.empty? %>
+      <% else %>
+    <% @project.proj_attachments.each do |pic| %>
     <div class="uk-cover-container">
-  <%= link_to pic.url, class: "" do %>
-          <div class="uk-height-small uk-width" style="overflow: hidden; background: url('<%= pic.url %>') no-repeat center center; background-size: cover;height: 250px;" >
+  <%= link_to pic.image.url do %>
+          <div class="uk-height-small uk-width" style="overflow: hidden; background: url('<%= pic.image.url %>') no-repeat center center; background-size: cover;height: 250px;" >
 <!-- %= image_tag( pic.medium.url, class: "uk-inline", caption: @project.title,) if @project.pics? %-->
 </div>
   <% end %>
 </div>
+<% end %>
 <% end %>
   </div>
 <!-- #END IMAGES DISPLAY GRID --->
@@ -45,8 +50,8 @@
 <div class="">
   <%= link_to team_path(@project.team), class: "uk-link-text" do %>
 <div class="uk-child-width-expand@s">
-<%= image_tag( @project.team.picture.small_thumb.url,  alt: 'Team', style: "width: 80px;") if @project.team.picture? %>
-  <span class="uk-text-lead uk-text-capitalize"><%= @project.team.name %> </span>
+<%= image_tag( @project.team.cover.url,  alt: 'Team', style: "width: 80px;") if @project.team.cover? %>
+  <span class="uk-text-lead uk-text-capitalize"><%= @project.team.tm_name %> </span>
 </div>
 <% end %> 
 </div>

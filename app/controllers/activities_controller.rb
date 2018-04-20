@@ -10,15 +10,17 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
+    @activity_attachments = @activity.activity_attachments.all
   end
 
   # GET /activities/new
   def new
     @activity = Activity.new
-  end
+  end 
 
   # GET /activities/1/edit
   def edit
+      @activity_attachment = @activity.activity_attachments.all
   end
 
   # POST /activities
@@ -28,6 +30,9 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
+       params[:activity_attachments]['image'].each do |a|
+         @activity_attachments = @activity.activity_attachments.create!(:image => a,     :activity_id => @activity.id)
+       end
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
@@ -69,6 +74,8 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.fetch(:activity, {})
+                params.require(:activity).permit(:id, :act_name, :act_about, :act_lat, :act_address, :act_long,
+                activity_attachments_attributes: [:image, :_destroy, :id, :project_id, :@original_filename, :@content_type, :@headers ])
+
     end
 end

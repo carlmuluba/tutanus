@@ -10,9 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *=dropzone/dropzone
  *= require_tree .
  *= require_self
  */
+ 
 @import url('https://fonts.googleapis.com/css?family=Bubbler+One|Chau+Philomene+One|Coustard|Francois+One|IBM+Plex+Serif:400,600|Open+Sans+Condensed:300,300i,700|Suez+One');
 
 
@@ -25,6 +27,7 @@ html, body {
 	background-color: #373737; /*carcoal*/
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 1.2rem;
+    color: #888;
 
 }
 

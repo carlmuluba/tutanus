@@ -1,0 +1,34 @@
+
+<div class="uk-child-width-1-1">
+	<% if @project.images.nil? %>
+  <% else %>
+<ul class="uk-thumbnav uk-child-width-1-4 uk-margin-medium-top" uk-margin>
+    <% @project.images.each do |pic| %>
+    <li class="uk-text-center">
+       <%= image_tag pic.image_url(:picture), class: "uk-thumbnail", width: 100 %>
+          <%= link_to image_path(@image), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" }, class: '' do %>
+          <span uk-icon="icon: close; ratio: 2;" style="color: red;"><span>
+          <% end %>
+    </li>
+      <% end %>
+    </ul>
+    <% end %>
+</div>
+
+<div class="uk-margin-medium-top">
+	<p style="color: grey;">Add Images</p>
+<!-- %= form_with model: @project do |f| %-->
+<%= form_for @project, html: {multipart: true} do |f| %>
+<!--%= f.fields_for :picture do |fpic| %-->
+        <div >
+  <div class="uk-margin fallback uk-align-right" uk-margin>
+        <div uk-form-custom="target: true">
+    <%= f.file_field :images, multiple: true %> <!--, onchange: "this.form.submit();" -->
+            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select new files" disabled>        
+        </div>
+        <!--% end %-->
+    <%= f.submit :upload, class: "uk-button uk-button-primary" %>
+  </div>
+  <% end %>
+</div>
+</div>

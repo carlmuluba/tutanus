@@ -1,4 +1,74 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+ <%= render "shared/navigation/topnav_fixed" %>
+  <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove-top">
+   <%= @activity.act_name %>
+  </h5>
+<div class="uk-margin-small-left uk-margin-small-right">
+  <div class="uk-column-1-2@s uk-column-divider uk-margin-medium-bottom uk-margin-medium-top">
+<p class="uk-dropcap ">
+  <%= @activity.act_about %>
+  </p>
+</div>
+</div>
+<!-- #START IMAGES DISPLAY GRID --->
+<div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
+    <div class="uk-grid-small uk-margin-small uk-child-width-1-3@s uk-text-center" uk-grid uk-lightbox="animation: scale">
+      <% if @activity.activity_attachments.empty? %>
+      <% else %>
+    <% @activity.activity_attachments.each do |pic| %>
+    <div class="uk-cover-container">
+  <%= link_to pic.image.url do %>
+          <div class="uk-height-small uk-width" style="overflow: hidden; background: url('<%= pic.image.url %>') no-repeat center center; background-size: cover;height: 250px;" >
+<!-- %= image_tag( pic.medium.url, class: "uk-inline", caption: @activity.title,) if @activity.pics? %-->
+</div>
+  <% end %>
+</div>
+<% end %>
+<% end %>
+  </div>
+<!-- #END IMAGES DISPLAY GRID --->
+<p class="uk-text-center">
+  <%if @activity.act_date.nil?  %>
+  <% else %>
+      Date <%= @activity.act_date %>
+ <% end %>
+</p>
+</div>
+<!-- #END IMAGES DISPLAY GRID --->
+<!-- #START TEAM STUFF --->
+<!--% if @activity.team.nil? %>
+<div class="uk-background-muted uk-height-auto uk-padding-small uk-margin-medium-top uk-clearfix">
+<div class="uk-column-1-2@s uk-margin-small-top">
+< %= link_to activities_path, class: "uk-padding-small uk-margin-auto-right uk-margin-auto-left uk-padding-remove-bottom" do %>
+<div>
+<span uk-icon="icon: album; ratio: 2;"></span> All Activities
+</div>
+< % end %>
+</div>
+</div>
+< % else %>
+<div class="uk-background-muted uk-height-auto uk-padding-small uk-clearfix uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+<div class="">
+  < %= link_to team_path(@activity.team), class: "uk-link-text" do %>
+<div class="uk-child-width-expand@s">
+< %= image_tag( @activity.team.picture.url,  alt: 'Team', width: 80) if @activity.team.picture? %>
+  <span class="uk-text-lead uk-text-capitalize">< %= @activity.team.team_name %> </span>
+</div>
+< % end %> 
+</div>
+  <div class="uk-margin-auto-left uk-margin-auto-right">
+      <ul class="uk-iconnav">
+< %= link_to activities_path do %>
+ <li uk-icon="icon: arrow-left; ratio: 2"></li> 
+ < % end %>
+< %= link_to edit_activity_path(@activity) do %> 
+ <li uk-icon="icon: file-edit; ratio: 2"></li> 
+ < % end %>
+< %= link_to @activity, method: :delete, data: { confirm: 'Are you sure?' } do %>
+ <li uk-icon="icon: trash; ratio: 2"></li> 
+ < % end %>
+</ul>
+</div>
+</div>
+< % end %-->
+<!-- #END TEAM STUFF --->
+ <%= render "shared/bottom_page" %>

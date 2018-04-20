@@ -1,6 +1,34 @@
-<h1>Editing Activity</h1>
+<div class="uk-container uk-container- uk-align-center"> 
+<p class="uk-heading-primary uk-text-muted">Editing Activity - <%= @activity.act_name %></p>
+<div class="uk-card uk-card-default uk-padding">
+<div uk-switcher="animation: uk-animation-fade">
+    <button class="uk-button uk-button-secondary" type="button">Activity Edit</button>
+    <button class="uk-button uk-button-secondary" type="button">Manage Images</button>
+<!-- #END IF NO COLLECTION CONDITION -->
+</div> 
 
+<ul class="uk-switcher uk-margin">
+<!-- #START PROJECT FORM -->
+    <li>
+<div class="uk-column-1-1">
 <%= render 'form', activity: @activity %>
-
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path %>
+</div>
+</li>
+<!-- #START PICTURE FORM -->
+    <li>
+<div class="uk-height uk-padding-large uk-padding-remove-top uk-padding-remove-horizontal">
+<%= render 'shared/attachments/activity_attach_form', activity: @activity %>
+</div>
+</li>
+<!-- #END FORMS -->
+</ul>
+</div>
+<div class="uk-text-center uk-margin-medium-top">
+<%= link_to :back do %>
+ <span uk-icon="icon: arrow-left; ratio: 2"></span> 
+ <% end %>
+ |
+<%= link_to @activity do %> 
+ <span uk-icon="icon: album; ratio: 2"></span> <% end %>
+</div>
+</div>

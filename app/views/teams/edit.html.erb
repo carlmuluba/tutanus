@@ -1,6 +1,19 @@
-<h1>Editing Team</h1>
+<div class="uk-container uk-container- uk-align-center"> 
+<p class="uk-heading-primary uk-text-muted">Editing Team - <%= @team.tm_name %></p>
+<div class="uk-card uk-card-default uk-padding">
 
+<!-- #START PROJECT FORM -->
+<div class="uk-column-1-1">
 <%= render 'form', team: @team %>
-
-<%= link_to 'Show', @team %> |
-<%= link_to 'Back', teams_path %>
+</div>
+<!-- #END FORMS -->
+</div>
+<div class="uk-text-center uk-margin-medium-top">
+<%= link_to :back do %>
+ <span uk-icon="icon: arrow-left; ratio: 2"></span> 
+ <% end %>
+ |
+<%= link_to @team do %> 
+ <span uk-icon="icon: album; ratio: 2"></span> <% end %>
+</div>
+</div>

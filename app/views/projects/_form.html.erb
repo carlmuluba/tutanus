@@ -1,10 +1,10 @@
 <div class="uk-height-auto">
 <%= form_with model: @project, local: true do |form| %>
 
-        <div uk-form-custom="target: true">
-    <%= form.file_field :images, multiple: true %>
+        <!--div uk-form-custom="target: true">
+    < %= form.file_field :images, multiple: true %>
             <input class="uk-input uk-form-width-medium" type="text" placeholder="Select images" disabled>        
-        </div>
+        </div-->
 
   <div class="uk-margin">
     <%= form.select( :proj_kind, ['Project Type',['Branding'],['Film and Commercial'],['Digital'],['Environmental'],['Print'],['Packinging'],['Product'],['Social']],{}, { class: 'uk-input uk-child-width-1-1'}) %>  

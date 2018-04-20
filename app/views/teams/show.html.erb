@@ -1,4 +1,61 @@
-<p id="notice"><%= notice %></p>
+ <%= render "shared/navigation/topnav_fixed" %>
+  <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove-top"><%= @team.tm_name %>
+  </h5>
+  <!-- #START TEAM INFORMATION -->
+ <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
+<% if @team.project.nil? %>
+  <div class="uk-column-1-1 uk-margin-medium-top">
+This Team Don't Have Any Project Yet!
+</div>
+<% else %>  
+<% end %>
+  <div class="uk-column-1-2@s uk-margin-medium-top">
+<p><%= image_tag(@team.cover.url, alt: 'Image') if @team.cover? %>
+<br>joined <%= @team.tm_joined_date %>
+  <!--%= link_to 'Team Project', project_url(id: @team.project_id, pg: :projects), class: 'uk-align-right uk-link-text' %--> </p>
+<p><%= @team.tm_about %></p>
+</div>
+</div>
+  <!-- #END TEAM INFORMATION -->
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+  <!-- #START PROFESSIONALS LIST  -->
+  <% if @team.professionals.empty? %>
+<% else %>
+<div class="uk-text-center uk-margin-medium-top uk-background-muted uk-padding-small">
+    <span class="uk-text-capitalize"><%= @team.tm_name %>'s Professionals</span>
+</div>
+<div class="uk-child-width-1-4@s uk-margin-medium-top uk-card" uk-grid>
+    	<% @team.professionals.each do |profes| %> 
+    <div class="uk-card-header">
+    	<div>
+    		<%= link_to professional_path(profes.id), class: "uk-link-muted" do %>
+    	   	<div style="max-height: 120px; overflow: hidden;">   		  
+    	  	<%= image_tag( profes.cover.url, alt: 'Image', style: "") if profes.cover? %>
+    	  		</div>
+    </div>
+    <div class="uk-text-capitalize"> 
+    	<%= profes.first_name %><span class="uk-text-uppercase"> <%= profes.last_name %></span>
+    </div>
+    	<% end %>
+    </div>
+<% end %>    		
+    </div>
+    <% end %>
+  <!-- #END PROFESSIONALS LIST  -->
+
+<div class="uk-background-muted uk-padding-small uk-margin-medium-top">
+  <ul class="uk-iconnav uk-width-small uk-margin-auto-left uk-margin-auto-right">
+<%= link_to teams_path do %>
+ <li uk-icon="icon: arrow-left; ratio: 2"></li> 
+ <% end %>
+<%= link_to edit_team_path(@team) do %> 
+ <li uk-icon="icon: file-edit; ratio: 2"></li> 
+ <% end %>
+<%= link_to @team, method: :delete, data: { confirm: 'Are you sure?' } do %>
+ <li uk-icon="icon: trash; ratio: 2"></li> 
+ <% end %>
+</ul>
+</div>
+</div>
+
+ <%= render "shared/bottom_page" %>
