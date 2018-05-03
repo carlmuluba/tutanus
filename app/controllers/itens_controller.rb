@@ -78,7 +78,7 @@ class ItensController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def iten_params
                 params.require(:iten).permit(:id, :name, :description,
-                item_attachments_attributes: [:image, :_destroy, :id, :iten_id, :@original_filename, :@content_type, :@headers ])
+                item_attachments_attributes: [:image, :_destroy, :id, :iten_id, :@original_filename, :@content_type, :@headers ],
                                     parts_attributes: [:id, :part_code, :part_seller, :part_description, :part_started, :part_finished, :part_aquired, :part_iten_id])
 
     end
