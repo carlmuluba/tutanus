@@ -1,5 +1,8 @@
-<h1>New Collection</h1>
-
+<%= render "shared/navigation/backend_nav" %>
+<div class="uk-container uk-container- uk-align-center"> 
+<p class="uk-heading-primary uk-text-muted">New Collection</p>
+<div class="uk-height uk-padding uk-card-default">
 <%= render 'form', collection: @collection %>
-
-<%= link_to 'Back', collections_path %>
+</div>
+</div>
+ 

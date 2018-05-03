@@ -1,20 +1,25 @@
- <% if @collections.empty? %>
-    <div class="uk-text-center uk-width-1-1 uk-height-small">
-      <h3 class="uk-light">No collections available</h3>
-    </div>
+ <!-- #START CONDICTION --> 
+    <% if @collections.empty? %>
+    <div class="uk-text-center uk-width-1-1 uk-height-medium">
+      <h3 class="uk-light">No collection yet</h3>
+    </div> 
     <% else %>
-<!-- #START DIPLAY LIST -->
-    <% @collections.each do |collection| %>
-    <%= link_to collection, class: "uk-link-muted" do %>
-    <div class="uk-margin-small-left" uk-grid>
-    <div class="uk-height-small uk-width-small" style="overflow: hidden; background: url('<%= collection.coll_cover.thumb.url %>') no-repeat center center; background-size: cover;">
-    </div>
-            <div class="uk-width-expand uk-light" style="overflow: hidden;">
-    <h3 class="uk-card-title uk-margin-remove-bottom uk-text-capitalize"><%= collection.coll_title %></h3>
-    <p class="uk-text-meta uk-margin-remove-top">project <%= collection.project_id %></p>       </div>
-        </div>               
-        <hr class="uk-list-divider uk-margin-remove-bottom uk-margin-small-left uk-margin-small-right">
+<!-- #START EACH PROJECT -->
+    <% @collections.each do |col| %>
+<!-- #START CONTENT LINK -->
+      <%= link_to collection_url(id: col.id, pg: :collections), class: 'uk-inline-clip uk-transition-toggle' do %>
+    <div id="bgimg" class="bg-img_<%= col.id %> uk-tile" style="height: 250px; overflow: hidden; background: url(<%= col.coll_cover %>); no-repeat center center; background-size: cover; background-color: #f8f8f8;">
+    <div class="uk-transition-slide-bottom uk-position-cover uk-overlay uk-overlay-primary ">
+      <h3 class="uk-card-title uk-light"><%= col.coll_title %></h3>
+        <span uk-overlay-icon></span>
+        <p class="uk-article-meta uk-light">
+  <!--% if project.proj_startdate || project.proj_enddate %>
+      released between < %= project.proj_startdate %> and < %= project.proj_enddate %></p-->
+     </div>
+     </div>
     <% end %>
+<!-- #END CONTENT LINK -->
     <% end %>
-<!-- #END DISPLAY LIST-->
+<!-- #END EACH PROJECT -->
     <% end %>
+<!-- #END CONDICTION -->

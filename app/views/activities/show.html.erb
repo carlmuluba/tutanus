@@ -35,23 +35,23 @@
 </div>
 <!-- #END IMAGES DISPLAY GRID --->
 <!-- #START TEAM STUFF --->
-<!--% if @activity.team.nil? %>
+<% if @activity.team.empty? %>
 <div class="uk-background-muted uk-height-auto uk-padding-small uk-margin-medium-top uk-clearfix">
 <div class="uk-column-1-2@s uk-margin-small-top">
-< %= link_to activities_path, class: "uk-padding-small uk-margin-auto-right uk-margin-auto-left uk-padding-remove-bottom" do %>
+<%= link_to activities_path, class: "uk-padding-small uk-margin-auto-right uk-margin-auto-left uk-padding-remove-bottom" do %>
 <div>
 <span uk-icon="icon: album; ratio: 2;"></span> All Activities
 </div>
-< % end %>
+<% end %>
 </div>
 </div>
-< % else %>
+<% else %>
 <div class="uk-background-muted uk-height-auto uk-padding-small uk-clearfix uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
 <div class="">
-  < %= link_to team_path(@activity.team), class: "uk-link-text" do %>
+  <%= link_to team_path(@activity.team), class: "uk-link-text" do %>
 <div class="uk-child-width-expand@s">
-< %= image_tag( @activity.team.picture.url,  alt: 'Team', width: 80) if @activity.team.picture? %>
-  <span class="uk-text-lead uk-text-capitalize">< %= @activity.team.team_name %> </span>
+<%= image_tag(@activity.team.tm_cover.url,  alt: 'Team', width: 80) if @activity.team.tm_cover? %>
+  <span class="uk-text-lead uk-text-capitalize">< %= @activity.team.tm_name %> </span>
 </div>
 < % end %> 
 </div>

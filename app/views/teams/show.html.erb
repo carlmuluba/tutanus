@@ -10,7 +10,7 @@ This Team Don't Have Any Project Yet!
 <% else %>  
 <% end %>
   <div class="uk-column-1-2@s uk-margin-medium-top">
-<p><%= image_tag(@team.cover.url, alt: 'Image') if @team.cover? %>
+<p><%= image_tag(@team.tm_cover.url, alt: 'Image') if @team.tm_cover? %>
 <br>joined <%= @team.tm_joined_date %>
   <!--%= link_to 'Team Project', project_url(id: @team.project_id, pg: :projects), class: 'uk-align-right uk-link-text' %--> </p>
 <p><%= @team.tm_about %></p>
@@ -30,7 +30,7 @@ This Team Don't Have Any Project Yet!
     	<div>
     		<%= link_to professional_path(profes.id), class: "uk-link-muted" do %>
     	   	<div style="max-height: 120px; overflow: hidden;">   		  
-    	  	<%= image_tag( profes.cover.url, alt: 'Image', style: "") if profes.cover? %>
+    	  	<%= image_tag( profes.prof_cover.url, alt: 'Image', style: "") if profes.prof_cover? %>
     	  		</div>
     </div>
     <div class="uk-text-capitalize"> 

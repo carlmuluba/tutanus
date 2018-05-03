@@ -1,18 +1,6 @@
-<div class="uk-height-auto">
+<div class="uk-height-auto" >
 <%= form_with(model: activity, local: true) do |form| %>
-  <% if activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
-      <ul>
-      <% activity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-  <div class="uk-margin">
   <div class="uk-margin">    
     <%= form.text_field :act_name, id: :act_name, class: "uk-input uk-text-capitalize", placeholder: :activity_name %>
   </div>
@@ -21,23 +9,24 @@
     <%= form.text_area :act_about, id: :act_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
 </div>
 
-  <div class="uk-margin cst_select">
-    <%= form.date_field :act_date, id: :act_date, class: "uk-input uk-medium" %>
+  <div class="uk-margin">
+    <%= form.date_field :act_date, id: :act_date, class: "uk-input uk-form-width-medium" %>
     <%= form.label :date %>
   </div>
 
-  <div class="uk-margin cst_select">    
+  <div class="uk-margin">    
     <%= form.text_field :act_address, id: :act_address, class: "uk-input uk-text-capitalize", placeholder: :address %>
 
   </div>
-
-  <div class="uk-margin cst_select">
+<div class="uk-grid-small" uk-grid>
+  <div class="uk-width-1-2@s">
     <%= form.text_field :act_lat, id: :act_lat, class: "uk-input uk-text-capitalize", placeholder: :latitude %>
   </div>
 
-  <div class="uk-margin cst_select">
+  <div class="uk-width-1-2@s">
     <%= form.text_field :act_lat, id: :act_long, class: "uk-input uk-text-capitalize", placeholder: :longitude %>
   </div>
+</div>
   <div class="uk-margin">
     <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
   </div>

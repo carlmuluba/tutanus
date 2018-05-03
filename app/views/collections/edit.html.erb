@@ -1,6 +1,41 @@
-<h1>Editing Collection</h1>
+<%= render "shared/navigation/backend_nav" %>
+<div class="uk-container uk-container- uk-align-center"> 
+<p class="uk-heading-primary uk-text-muted">Editing Collection - <%= @collection.coll_title %></p>
+<div class="uk-card uk-card-default uk-padding">
 
+<div uk-switcher="animation: uk-animation-fade">
+    <button class="uk-button uk-button-secondary" type="button">Collection Edit</button>
+    
+<!-- #IF NO ITENS CONDITION -->
+    <% if @collection.itens %>
+    <button class="uk-button uk-button-secondary" type="button">Add Iten</button>
+    <% else %>
+    <button class="uk-button uk-button-secondary" type="button">Edit Item</button>
+    <% end %>
+<!-- #END IF NO ITENS CCONDITION -->
+</div> 
+<!-- #START PROJECT FORM -->
+<ul class="uk-switcher uk-margin">
+<!-- #START COLLECTION FORM -->
+    <li>
+<div class="uk-column-1-1">
 <%= render 'form', collection: @collection %>
-
-<%= link_to 'Show', @collection %> |
-<%= link_to 'Back', collections_path %>
+</div>
+</li>
+<!-- #START ITENS FORM -->
+    <li>
+<div class="uk-height uk-padding-large uk-padding-remove-top uk-padding-remove-horizontal">
+<%= render 'collections/itens_stuff/itens_form', collection: @collection %>
+</div>
+</li>
+</ul>
+</div>
+<div class="uk-text-center uk-margin-medium-top">
+<%= link_to :back do %>
+ <span uk-icon="icon: arrow-left; ratio: 2"></span> 
+ <% end %>
+ |
+<%= link_to @collection do %> 
+ <span uk-icon="icon: album; ratio: 2"></span> <% end %>
+</div>
+</div>

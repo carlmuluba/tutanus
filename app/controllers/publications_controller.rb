@@ -10,6 +10,7 @@ class PublicationsController < ApplicationController
   # GET /publications/1
   # GET /publications/1.json
   def show
+      @publication_attachments = @publication.publication_attachments.all
   end
 
   # GET /publications/new
@@ -19,6 +20,7 @@ class PublicationsController < ApplicationController
 
   # GET /publications/1/edit
   def edit
+      @publication_attachment = @publication.publication_attachments.all
   end
 
   # POST /publications
@@ -28,6 +30,9 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
+       params[:publication_attachments]['image'].each do |a|
+         @publication_attachments = @project.publication_attachments.create!(:image => a,     :publication_id => @publication.id)
+       end
         format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
         format.json { render :show, status: :created, location: @publication }
       else
@@ -69,6 +74,8 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.fetch(:publication, {})
+      params.require(:project).permit(:pub_title, :pub_authors :pub_description, :pub_keywords, :pub_date, :pub_editor, :pub_city, :pub_country,
+                       publication_attachments_attributes: [:image, :_destroy, :id, :publication_id, :@original_filename, :@content_type, :@headers ])
+
     end
 end

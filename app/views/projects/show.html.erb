@@ -35,7 +35,7 @@
 </div>
 <!-- #END IMAGES DISPLAY GRID --->
 <!-- #START TEAM STUFF --->
-<% if @project.team.nil? %>
+<% if @project.teams %>
 <div class="uk-background-muted uk-height-auto uk-padding-small uk-margin-medium-top uk-clearfix">
 <div class="uk-column-1-2@s uk-margin-small-top">
 <%= link_to projects_path, class: "uk-padding-small uk-margin-auto-right uk-margin-auto-left uk-padding-remove-bottom" do %>
@@ -50,7 +50,7 @@
 <div class="">
   <%= link_to team_path(@project.team), class: "uk-link-text" do %>
 <div class="uk-child-width-expand@s">
-<%= image_tag( @project.team.cover.url,  alt: 'Team', style: "width: 80px;") if @project.team.cover? %>
+<%= image_tag( @project.team.cover.url,  alt: 'Team', width: 80) if @project.team.cover? %>
   <span class="uk-text-lead uk-text-capitalize"><%= @project.team.tm_name %> </span>
 </div>
 <% end %> 

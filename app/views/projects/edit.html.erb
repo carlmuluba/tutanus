@@ -1,3 +1,4 @@
+<%= render "shared/navigation/backend_nav" %>
 <div class="uk-container uk-container- uk-align-center"> 
 <p class="uk-heading-primary uk-text-muted">Editing Project - <%= @project.proj_title %></p>
 <div class="uk-card uk-card-default uk-padding">
@@ -5,7 +6,7 @@
     <button class="uk-button uk-button-secondary" type="button">Project Edit</button>
     <button class="uk-button uk-button-secondary" type="button">Manage Images</button>
 <!-- #IF NO TEAM FOR PROJECT CONDITION -->
-    <% if @project.team.nil? %>
+    <% if @project.teams %>
     <button class="uk-button uk-button-secondary" type="button">Add a Team</button>
     <% else %>
     <button class="uk-button uk-button-secondary" type="button">Edit Team</button>
@@ -19,7 +20,7 @@
     <% end %>
 <!-- #END IF NO COLLECTION CONDITION -->
 </div> 
-
+ 
 <ul class="uk-switcher uk-margin">
 <!-- #START PROJECT FORM -->
     <li>

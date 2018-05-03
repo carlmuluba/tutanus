@@ -18,7 +18,8 @@ class CollectionsController < ApplicationController
   end
 
   # GET /collections/1/edit
-  def edit
+  def edit   
+     @collection.itens.build(it_collection_id: @collection.id)
   end
 
   # POST /collections
@@ -70,7 +71,8 @@ class CollectionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
       #params.fetch(:collection, {})
-                  params.require(:collection).permit(:id, :coll_title, :coll_cover, :coll_about, :project_id, :item_id, :remote_coll_cover_url, :remove_call_cover, :coll_cover_cache) 
+                  params.require(:collection).permit(:id, :coll_title, :coll_cover, :coll_about, :coll_project_id, :coll_item_id, :remote_coll_cover_url, :remove_coll_cover, :coll_cover_cache,
+                                    itens_attributes: [:id, :it_name, :it_description, :it_collection_id])
 
     end
 end

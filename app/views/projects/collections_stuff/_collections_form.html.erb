@@ -1,0 +1,86 @@
+<!-- @START THUMBS VIEW -->
+   <div class="uk-child-width-1-1">
+<ul class="uk-thumbnav uk-child-width-1-4 uk-margin-medium-top" uk-margin>
+                    <% @project.collections.each do |pc| %>
+                  <% if pc.coll_cover %>
+                  <li>
+                    <h5 id="no-media">No Images Found</h5>
+                  </li>
+                  <% else %>
+                      <li class="uk-text-center">
+                          <%= image_tag pc.coll_cover.url, class: "uk-thumbnail", width: 100 %>
+                            
+          <%= link_to collection_path(pc.id), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } do %>
+          <span uk-icon="icon: close; ratio: 2;" style="color: red;"><span>
+          <% end %>
+    </li>
+                    <% end %>
+                </ul>
+                  <% end %>
+</div>
+<!-- @END THUMBS VIEW -->
+<%= form_with(model: @project, local: true) do |form| %>
+
+<%= form.fields_for :collections, @project.collections.each do |fc| %>
+<!-- :::::::::::::::::::::::::::::::::::::: @IMAGE STUFF -->
+        <div uk-form-custom="target: true">
+<!--% if collection.coll_cover? %>
+    < %= image_tag collection.coll_cover.url, class: "uk-margin-small-bottom", width: 100 %>
+    <div>
+      < %= label_tag :remove_cover do %>
+        Remove image
+        < %= fc.check_box :remove_cover, onchange: 'this.form.submit();' %>
+        < % end %>
+  </div>
+      < % else %>  
+    <div>
+    </div-->      
+    <%= image_tag "", id: "cover_img_tag", width: 100, class: "uk-margin-small-bottom"  %>
+    <%= fc.file_field :coll_cover, id: "cover_img" %>
+            <%= fc.text_field :coll_cover, class: "uk-input uk-form-width-medium", placeholder: "Select Collection Image", disabled: true %>  
+    <!--%= fc.hidden_field :cover_cache %-->
+<!--% end %-->      
+        </div>
+<!-- ::::::::::::::::::::::::::::::::::: END @IMAGE STUFF -->
+
+  <div class="uk-margin" uk-margin>
+    <%= fc.text_field :coll_title, id: :coll_title, class: "uk-input uk-text-capitalize", placeholder: :collection_title %>
+  </div>
+
+  <div class="uk-margin">    
+    <%= fc.text_area :coll_about, id: :coll_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
+</div>
+    <%= form.text_field :coll_project_id, value: @project.id, id: :coll_project_id %>
+<% end %>
+
+  <div class="uk-margin">
+    <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+
+                $('#cover_img_tag').attr('src', e.target.result);
+
+            }
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+
+    }
+
+    $("#cover_img").change(function(){
+
+        readURL(this);
+
+    });
+</script>

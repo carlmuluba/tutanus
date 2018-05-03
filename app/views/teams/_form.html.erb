@@ -1,20 +1,10 @@
 <div class="uk-height-auto">
   <%= form_with(model: team, local: true, multipart: true) do |form| %>
-  <% if team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
-
-      <ul>
-      <% team.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
 <!-- :::::::::::::::::::::::::::::::::::::: @IMAGE STUFF -->
         <div uk-form-custom="target: true">
 <% if team.cover? %>
-    <%= image_tag team.cover.url, class: "uk-margin-small-bottom", width: 100 %>
+    <%= image_tag team.tm_cover.url, class: "uk-margin-small-bottom", width: 100 %>
     <div>
       <%= label_tag :remove_cover do %>
         Remove image
@@ -25,8 +15,8 @@
     <%= image_tag "", id: "cover_img_tag", width: 100, class: "uk-margin-small-bottom"  %>
     <div>
     </div>
-    <%= form.file_field :cover, id: "cover_img" %>
-            <%= form.text_field :cover, class: "uk-input uk-form-width-medium", placeholder: "Select Team Image", disabled: true %>  
+    <%= form.file_field :tm_cover, id: "cover_img" %>
+            <%= form.text_field :tm_cover, class: "uk-input uk-form-width-medium", placeholder: "Select Team Image", disabled: true %>  
     <%= form.hidden_field :cover_cache %>
 <% end %>      
         </div>
@@ -36,14 +26,14 @@
   </div>
 
   <div class="uk-margin cst_select">
-    <%= form.date_field :tm_joined_date, id: :tm_joined_date, class: 'uk-input uk-medium' %>
-    <%= form.label :joined_date %>
+    <%= form.date_field :tm_joined_date, id: :tm_joined_date, class: 'uk-input uk-form-width-medium' %>
+    <%= form.label :tm_joined_date %>
   </div>
 
   <div class="uk-margin">    
     <%= form.text_area :tm_about, id: :tm_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
 </div>
-    <%= form.hidden_field :project_id, id: :project_id %>
+    <%= form.hidden_field :tm_project_id, id: :tm_project_id %>
 
   <div class="uk-margin">
     <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>

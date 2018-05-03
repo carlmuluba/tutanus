@@ -1,11 +1,6 @@
 <div class="uk-height-auto">
 <%= form_with model: @project, local: true do |form| %>
 
-        <!--div uk-form-custom="target: true">
-    < %= form.file_field :images, multiple: true %>
-            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select images" disabled>        
-        </div-->
-
   <div class="uk-margin">
     <%= form.select( :proj_kind, ['Project Type',['Branding'],['Film and Commercial'],['Digital'],['Environmental'],['Print'],['Packinging'],['Product'],['Social']],{}, { class: 'uk-input uk-child-width-1-1'}) %>  
   </div>
@@ -16,16 +11,18 @@
   <div class="uk-margin">    
     <%= form.text_area :proj_about, id: :project_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
 </div>
-  <div class="uk-margin cst_select">    
-    <%= form.date_select :proj_startdate, id: :project_start_date, class: "" %>
+<div class="uk-grid-small" uk-grid>
+  <div class="uk-width-1-2@s">
+    <%= form.date_field :proj_startdate, id: :project_start_date, class: "uk-input" %>
     <%= form.label :start_date %>
 
   </div>
 
-  <div class="uk-margin cst_select">
-    <%= form.date_select :proj_enddate, id: :project_end_date, class: "" %>
+  <div class="uk-width-1-2@s">
+    <%= form.date_field :proj_enddate, id: :project_end_date, class: "uk-input" %>
     <%= form.label :end_date %>
   </div>
+</div>
 
   <div class="uk-margin">
     <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>

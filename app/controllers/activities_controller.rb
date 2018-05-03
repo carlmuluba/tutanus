@@ -30,9 +30,9 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-       params[:activity_attachments]['image'].each do |a|
-         @activity_attachments = @activity.activity_attachments.create!(:image => a,     :activity_id => @activity.id)
-       end
+       #params[:activity_attachments]['image'].each do |a|
+       #  @activity_attachments = @activity.activity_attachments.create!(:image => a,     :activity_id => @activity.id)
+       #end
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
