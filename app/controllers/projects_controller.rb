@@ -43,7 +43,7 @@ def search
   # GET /projects/new
   def new
     @project = Project.new 
-      if @project.collection
+      if @project.collections
         @project.collections.build(:coll_project_id => @project.id)
       end
   end

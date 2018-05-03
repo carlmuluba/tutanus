@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+# Ruby version
 
 * RUBY 2.5.1 (rvmrc ruby-2.5.1@tutanus)
 * RAILS 5.1.6
@@ -22,9 +22,7 @@ Things you may want to cover:
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+# Deployment instructions
 
 * HEROKU DEPLOYMENT
 * git commit -a (VIM o - Esc - :wq)
@@ -32,13 +30,18 @@ Things you may want to cover:
 * git push heroku master
 * heroku run rake db:migrate
 
-* (https://tutanus.herokuapp.com/)
+  https://tutanus.herokuapp.com/
+  https://git.heroku.com/tutanus.git
+
+* ...
 
 * Postgres 
 * psql -d tutanus_development -U postgres -W
 * \d+ "proj_pictures"
 * TABLE projects 
 * rails db:schema:dump (load database from server)
+
+* heroku run rake db:schema:load
 
 * Carriewave
 * Multiple Images Uploading With CarrierWave and PostgreSQL Array
