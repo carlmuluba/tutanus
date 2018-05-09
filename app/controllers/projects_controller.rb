@@ -53,6 +53,8 @@ def search
       @proj_attachment = @project.proj_attachments.all
       @collection = @project.collections.all
       @project.collections.build(coll_project_id: @project.id)
+      @team = @project.teams.all
+      @project.teams.build(tm_project_id: @project.id)
   end
 
   # POST /projects
@@ -61,7 +63,7 @@ def search
         @project = Project.new(project_params)
     respond_to do |format|
      if @project.save
-        @project.collections.create(coll_project_id: @project.id)
+       # @project.collections.create(coll_project_id: @project.id)
         format.html { redirect_to edit_project_path(@project.id), notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: edit_project_path(@project.id) }
       else
@@ -105,9 +107,9 @@ def search
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-          params.require(:project).permit(:id, :proj_title, :proj_kind, :proj_about, :proj_startdate, :proj_enddate,
+          params.require(:project).permit(:id, :proj_title, :proj_kind, :proj_about, :proj_startdate, :proj_enddate, :proj_cover,
                 proj_attachments_attributes: [:image, :_destroy, :id, :project_id, :@original_filename, :@content_type, :@headers ],
-                teams_attributes: [:id, :tm_name, :tm_cover, :tm_joined_date, :remove_cover, :cover_cache, :tm_project_id ],
+                teams_attributes: [:id, :tm_name, :tm_cover, :tm_joined_date, :remove_cover, :cover_cache, :tm_project_id],
                 collections_attributes: [:id, :coll_title, :coll_cover, :cover_cache, :coll_about, :coll_project_id, :coll_team_id])
     
     end

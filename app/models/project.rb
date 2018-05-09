@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+    mount_uploader :proj_cover, ImageUploader
 	has_many :teams, foreign_key: :tm_project_id
 	has_many :collections, foreign_key: :coll_project_id 
 	has_many :itens, foreign_key: :it_project_id 

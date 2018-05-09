@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @project = Project.where(id: @team.tm_project_id)
   end
 
   # GET /teams/new
@@ -19,6 +20,10 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+    @proj_options = Project.all.map{ |p| [ p.proj_title, p.id ] }
+    #@project = Project.
+     # @team.projects.build
+
   end
 
   # POST /teams
@@ -28,8 +33,8 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render :show, status: :created, location: @team }
+        format.html { redirect_to edit_team_path, notice: 'Team was successfully created.' }
+        format.json { render :show, status: :created, location: edit_team_path }
       else
         format.html { render :new }
         format.json { render json: @team.errors, status: :unprocessable_entity }
@@ -42,8 +47,9 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
-        format.json { render :show, status: :ok, location: @team }
+        #@team.projects.create(proj_team_id: @team.id)
+        format.html { redirect_to edit_team_path, notice: 'Team was successfully updated.' }
+        format.json { render :show, status: :ok, location: edit_team_path }
       else
         format.html { render :edit }
         format.json { render json: @team.errors, status: :unprocessable_entity }
@@ -70,6 +76,8 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       #params.fetch(:team, {})
-            params.require(:team).permit(:id, :tm_about, :tm_name, :tm_joined_date, :project_id, :professional_id, :cover, :cover_cache, :remove_cover)
+            params.require(:team).permit(:id, :tm_about, :tm_name, :tm_joined_date, :project_id, :professional_id, :cover, :cover_cache,               
+             project_attributes: [:id, :proj_title])
+
     end
 end

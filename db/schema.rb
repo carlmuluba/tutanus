@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421215055) do
+ActiveRecord::Schema.define(version: 20180509134839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,9 @@ ActiveRecord::Schema.define(version: 20180421215055) do
     t.date "proj_startdate"
     t.date "proj_enddate"
     t.string "proj_kind"
+    t.string "proj_cover"
+    t.integer "proj_team_id"
+    t.index ["proj_team_id"], name: "index_projects_on_proj_team_id"
   end
 
   create_table "publication_attachments", force: :cascade do |t|

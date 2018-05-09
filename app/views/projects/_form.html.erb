@@ -1,6 +1,10 @@
 <div class="uk-height-auto">
 <%= form_with model: @project, local: true do |form| %>
 
+  <div class="uk-margin">    
+    <%= form.file_field :proj_cover, id: :proj_cover, class: "uk-input" %>
+    <%= form.label :project_cover %>
+  </div>
   <div class="uk-margin">
     <%= form.select( :proj_kind, ['Project Type',['Branding'],['Film and Commercial'],['Digital'],['Environmental'],['Print'],['Packinging'],['Product'],['Social']],{}, { class: 'uk-input uk-child-width-1-1'}) %>  
   </div>

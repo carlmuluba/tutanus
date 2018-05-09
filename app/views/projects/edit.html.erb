@@ -1,25 +1,25 @@
 <%= render "shared/navigation/backend_nav" %>
 <div class="uk-container uk-container- uk-align-center"> 
-<p class="uk-heading-primary uk-text-muted">Editing Project - <%= @project.proj_title %></p>
+<p class="uk-heading-primary uk-text-muted">Editing <%= @project.proj_title %></p>
 <div class="uk-card uk-card-default uk-padding">
-<div uk-switcher="animation: uk-animation-fade">
-    <button class="uk-button uk-button-secondary" type="button">Project Edit</button>
-    <button class="uk-button uk-button-secondary" type="button">Manage Images</button>
+<ul uk-switcher="animation: uk-animation-fade" uk-tab>
+    <li class="uk-button uk-button-secondary" type="button">Project Edit</li>
+    <li class="uk-button uk-button-secondary" type="button">Manage Images</li>
 <!-- #IF NO TEAM FOR PROJECT CONDITION -->
     <% if @project.teams %>
-    <button class="uk-button uk-button-secondary" type="button">Add a Team</button>
+    <li class="uk-button uk-button-secondary" type="button">Add a Team</li>
     <% else %>
-    <button class="uk-button uk-button-secondary" type="button">Edit Team</button>
+    <li class="uk-button uk-button-secondary" type="button">Edit Team</li>
     <% end %>
 <!-- #END IF NO TEAM CCONDITION -->
 <!-- #IF NO COLLECTION FOR PROJECT CONDITION -->
     <% if @project.collections %>
-    <button class="uk-button uk-button-secondary" type="button">Add Collection</button>
+    <li class="uk-button uk-button-secondary" type="button">Add Collection</li>
     <% else %>
-    <button class="uk-button uk-button-secondary" type="button">Edit Collections</button>
+    <li class="uk-button uk-button-secondary" type="button">Edit Collections</li>
     <% end %>
 <!-- #END IF NO COLLECTION CONDITION -->
-</div> 
+</ul> 
  
 <ul class="uk-switcher uk-margin">
 <!-- #START PROJECT FORM -->
@@ -42,13 +42,13 @@
 </li>
 <!-- #START COLLECTIONS FORM -->
     <li>
-    <% if @project.collections %>
+    <!--% if @project.collections %-->
     <div class="uk-height-viewport">
 <%= render 'projects/collections_stuff/collections_form', project: @project %>
 </div>
-    <% else %>
-    <%= link_to "Collections", project_collections_path(@project), class: "uk-button uk-button-secondary", type: "button" %>
-    <% end %>
+    <!--% else %>
+    < %= link_to "Collections", project_collections_path(@project), class: "uk-button uk-button-secondary", type: "button" %>
+    < % end %-->
 </li>
 <!-- #END FORMS -->
 </ul>
