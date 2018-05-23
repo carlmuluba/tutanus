@@ -37,7 +37,7 @@
 <div uk-lightbox="animation: fade">
   <%= link_to @project.proj_cover.url do %>
     <div class="uk-cover-container uk-height-viewport uk-margin-small-left uk-margin-small-right">
-  <%= cl_image_tag(@project.proj_cover.url, alt: @project.proj_title,  "uk-img" => "") %>
+  <%= cl_image_tag(@project.proj_cover.url, alt: @project.proj_title, width: "100%",  "uk-img" => "") %>
 </div>
 <% end %>
 </div>
