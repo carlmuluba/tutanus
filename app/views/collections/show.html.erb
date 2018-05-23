@@ -13,12 +13,17 @@
 </div>
 </div>
 
-<!-- #START IMAGES DISPLAY --->
+<!-- #START IMAGES DISPLAY GRID --->
+<div uk-lightbox="animation: fade">
 <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
-<div class="uk-cover-container uk-height-large">
-  <%= cl_image_tag(@collection.coll_cover, alt: "", :"uk-cover" =>"") %>
+    <div class="uk-cover-container">
+  <%= link_to @collection.coll_cover.url do %>
+          <div class="uk-height-large uk-width uk-background-cover" style="overflow: hidden; background: url('<%= @collection.coll_cover.url %>') no-repeat center center; background-size: cover;" >
 </div>
-  </div>
+  <% end %>
+</div>
+</div>
+</div>
 <!-- #END IMAGES DISPLAY --->
 <!-- #START ITENS LIST --->
 
@@ -33,7 +38,6 @@
 <div class="uk-grid-small" uk-grid>
     <div class="uk-width-expand" uk-leader>@Items</div>
     <div><%= @collection.itens.count(:id) %></div>
-</div>
 </div>
 <ul class="uk-list uk-list-divider uk-child-width-1-3@s uk-list-large" uk-grid>
     <% @collection.itens.each do |ci| %>
@@ -53,6 +57,7 @@
 <!-- #END EACH ITEM -->
   </ul>
 <% end %>
+</div>
 </div>
 <!-- #END ITENS LIST --->
 

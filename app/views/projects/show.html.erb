@@ -35,11 +35,13 @@
 </div>
 <!-- #START IMAGES DISPLAY GRID --->
 <div uk-lightbox="animation: fade">
+<div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
+    <div class="uk-cover-container">
   <%= link_to @project.proj_cover.url do %>
-    <div class="uk-cover-container uk-height-viewport uk-margin-small-left uk-margin-small-right">
-  <%= cl_image_tag(@project.proj_cover.url, alt: @project.proj_title, width: "100%",  "uk-img" => "") %>
+          <div class="uk-height-large uk-width uk-background-cover" style="overflow: hidden; background: url('<%= @project.proj_cover.url %>') no-repeat center center; background-size: cover;" >
 </div>
-<% end %>
+  <% end %>
+</div>
 </div>
 <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
     <div class="uk-grid-small uk-margin-small uk-child-width-1-3@s uk-text-center" uk-grid uk-lightbox="animation: scale">
@@ -55,6 +57,8 @@
 <% end %>
 <% end %>
   </div>
+</div>
+</div>
 <!-- #END IMAGES DISPLAY GRID --->
 <p class="uk-text-center">
   <%if @project.proj_startdate.blank? || @project.proj_enddate.blank? %>
