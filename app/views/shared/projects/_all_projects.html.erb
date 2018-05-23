@@ -8,7 +8,7 @@
     <% @projects.each do |project| %>
     <script type="text/javascript">
   var ImageArray = [<% project.proj_attachments.each do |pic| %>'<%= pic.image.url %>',<% end %> ];
-$( "<style type=\'text/css\'>div.bg-img_<%= project.id %> { background:  url(" + ImageArray[Math.floor(Math.random() * ImageArray.length)] + ") no-repeat center center; background-size: cover; background-color: #f8f8f8; }</style>").appendTo( "head" );
+$( "<style type=\'text/css\'>div.bg-img_<%= project.id %> { background: #f8f8f8 url(" + ImageArray[Math.floor(Math.random() * ImageArray.length)] + ") no-repeat; background-size: cover;}</style>").appendTo( "head" );
 </script>
 <!-- #START CONTENT LINK -->
       <%= link_to project_url(id: project, term: project.proj_kind, link: project.proj_kind), class: 'uk-inline-clip uk-transition-toggle' do %>

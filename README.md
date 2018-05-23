@@ -26,6 +26,7 @@ Things you may want to cover:
 
 * HEROKU DEPLOYMENT
 * git commit -a (VIM o - Esc - :wq)
+* git commit -m "commit message here"
 * git status
 * git push heroku master
 * heroku run rake db:migrate

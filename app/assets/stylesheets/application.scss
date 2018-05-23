@@ -76,6 +76,9 @@ h1,h2,h3,h4,h5,h6,.cst-h1,.cst-h2,.cst-h3{ font-family: 'IBM Plex Serif', serif;
     /*border-bottom: 2px solid #F8F8F8;  #C0B283; /*#373737; */
 }
 
+.uk-tooltip {
+    font-size: 1.2rem;
+}
 
 .cst_select > select{
 /*position: absolute;*/ 
@@ -97,4 +100,11 @@ background: #fff;
 transition: .2s ease-in-out;
 transition-property: color, background-color, border;
 
+}
+.bg_light{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9e77c+0,7db9e8+100&1+0,0+100 */
+background: -moz-linear-gradient(45deg, rgba(249,231,124,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg, rgba(249,231,124,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg, rgba(249,231,124,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9e77c', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }

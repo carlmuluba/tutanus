@@ -2,53 +2,63 @@
   <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove-top">
    <%= @collection.coll_title %>
   </h5>
-<div class="uk-margin-small-left uk-margin-small-right">
-  <div class="uk-column-1-2@s uk-column-divider uk-margin-medium-bottom uk-margin-medium-top">
+ <div class="uk-text-center uk-margin-small-bottom">
+  <a href=""  class="uk-link-text" uk-toggle="target: .proj-info; animation: uk-animation-fade;">about <span class="uk-margin-small-right" uk-icon="plus-circle"></span></a>
+</div>
+<div class="uk-margin-small-left uk-margin-small-right proj-info" hidden>
+  <div class="uk-column-1-2@s uk-column-divider uk-margin-medium-top">
 <p class="uk-dropcap ">
   <%= @collection.coll_about %>
   </p>
 </div>
 </div>
+
 <!-- #START IMAGES DISPLAY --->
 <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
 <div class="uk-cover-container uk-height-large">
-    <img src="<%= @collection.coll_cover.url %>" alt="" uk-cover>
+  <%= cl_image_tag(@collection.coll_cover, alt: "", :"uk-cover" =>"") %>
 </div>
   </div>
 <!-- #END IMAGES DISPLAY --->
 <!-- #START ITENS LIST --->
 
 <!-- #CONDICTION --> 
-    <% if @collection.itens.empty? %>
-    <div class="uk-text-center uk-width-1-1 uk-height-medium">
-      <h3 class="uk-light">No itens associated yet</h3>
+<div class="uk-margin-small-left uk-margin-small-right">
+<% if @collection.itens.empty? %>
+<!-- Nothing to show -->
+    <div class="uk-text-center uk-width-1-1">
+      <h5 class="uk-text-muted">No items associeted</h5>
     </div> 
-    <% else %>
-<!-- #START EACH ITEN -->
+<% else %>
+<div class="uk-grid-small" uk-grid>
+    <div class="uk-width-expand" uk-leader>@Items</div>
+    <div><%= @collection.itens.count(:id) %></div>
+</div>
+</div>
+<ul class="uk-list uk-list-divider uk-child-width-1-3@s uk-list-large" uk-grid>
     <% @collection.itens.each do |ci| %>
-<!-- #START CONTENT LINK -->
-      <%= link_to iten_url(id: ci.id, pg: :itens), class: 'uk-inline-clip uk-transition-toggle' do %>
-      <h3 class="uk-card-title uk-light"><%=ci.it_name %></h3>
-    <!--div id="bgimg" class="bg-img_< %= ci.id %> uk-title" style="height: 250px; overflow: hidden; background: url(< %= ci.it_cover %>); no-repeat center center; background-size: cover; background-color: #f8f8f8;">
-    <div class="uk-transition-slide-bottom uk-position-cover uk-overlay uk-overlay-primary ">
-      <h3 class="uk-card-title uk-light">< %= ci.it_title %></h3>
-        <span uk-overlay-icon></span>
-        <p class="uk-article-meta uk-light">
-  < !--% if project.proj_startdate || project.proj_enddate %>
-      released between < %= project.proj_startdate %> and < %= project.proj_enddate %></p-- >
-     <!--/div>
-     </div-->
-    <% end %>
+<!-- #START CONTENT LINK --> 
+<li>
+      <%= link_to iten_url(id: ci.id, pg: :itens), class: '' do %>
+          <div style="max-height: 120px; overflow: hidden;">        
+          <!--%= cl_image_tag( ci.it_cover.url, alt: 'Image') if ci.it_cover? %-->
+            </div>
+    <div class="uk-text-capitalize uk-link-reset uk-light"> 
+      <%= ci.it_name %>
+    </div>
+      <% end %>
+    </li>
 <!-- #END CONTENT LINK -->
     <% end %>
 <!-- #END EACH ITEM -->
-    <% end %>
-<!-- #END CONDICTION -->
-
+  </ul>
+<% end %>
+</div>
 <!-- #END ITENS LIST --->
+
 <!-- #START TEAM STUFF --->
+<div class="uk-background-muted uk-padding-small uk-margin-medium-top uk-clearfix uk-height-medium">
 <% if @collection.teams.empty? %>
-<div class="uk-background-muted uk-height-auto uk-padding-small uk-margin-medium-top uk-clearfix">
 <div class="uk-column-1-2@s uk-margin-small-top">
 <%= link_to teams_path, class: "uk-padding-small uk-margin-auto-right uk-margin-auto-left uk-padding-remove-bottom" do %>
 <div>
@@ -56,8 +66,9 @@
 </div>
 <% end %>
 </div>
-</div>
 <% else %>
+</div>
+
 <div class="uk-background-muted uk-height-auto uk-padding-small uk-clearfix uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
 <div class="">
     <% @collection.team.each do |pic| %>

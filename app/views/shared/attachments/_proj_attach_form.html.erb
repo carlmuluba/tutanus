@@ -15,23 +15,23 @@
                     <% end %>
                   <% end %>
                 </ul>
-</div>
 <!-- @END THUMBS VIEW -->
 <div class="uk-margin-medium-top">
   <p style="color: grey;">Add Images</p>
 <%= form_with model: @project, local: true do |f| %>  
-
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
    <%= f.fields_for :proj_attachments, ProjAttachment.new do |fpj| %>
-  <div class="uk-margin fallback uk-align-right" uk-margin>
+  <div class="uk-margin fallback" uk-margin>
         <div uk-form-custom="target: true">
        <%= fpj.file_field :image, multiple: true, name: "project[proj_attachments_attributes][][image]"  %>
             <input class="uk-input uk-form-width-medium" type="text" placeholder="Select files" disabled>        
         </div>
    <% end %>
    <div class="actions">
+    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
     <%= f.submit :upload, class: "uk-button uk-button-primary" %>
    </div>
+</div>
 <% end %>
 </div>
 </div>

@@ -1,17 +1,24 @@
 <div class="uk-height-auto">
 <%= form_with model: @project, local: true do |form| %>
-
+  <% if project.proj_cover? %>
+    <%= image_tag project.proj_cover.url, class: "uk-thumbnail", width: 100 %>
+    <div>
+      <%= label_tag :remove_image do %>
+        Remove image
+        <%= form.check_box :remove_image %>
+      <% end %>
+    </div>
+      <% else %>
   <div class="uk-margin">    
-    <%= form.file_field :proj_cover, id: :proj_cover, class: "uk-input" %>
-    <%= form.label :project_cover %>
+    <%= form.file_field :proj_cover, id: :proj_cover, class: "uk-input", placeholder: "Select image" %>
   </div>
+<% end %>
   <div class="uk-margin">
     <%= form.select( :proj_kind, ['Project Type',['Branding'],['Film and Commercial'],['Digital'],['Environmental'],['Print'],['Packinging'],['Product'],['Social']],{}, { class: 'uk-input uk-child-width-1-1'}) %>  
   </div>
   <div class="uk-margin">    
     <%= form.text_field :proj_title, id: :project_title, class: "uk-input uk-text-capitalize", placeholder: :project_title %>
   </div>
-    
   <div class="uk-margin">    
     <%= form.text_area :proj_about, id: :project_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
 </div>
@@ -19,15 +26,12 @@
   <div class="uk-width-1-2@s">
     <%= form.date_field :proj_startdate, id: :project_start_date, class: "uk-input" %>
     <%= form.label :start_date %>
-
   </div>
-
   <div class="uk-width-1-2@s">
     <%= form.date_field :proj_enddate, id: :project_end_date, class: "uk-input" %>
     <%= form.label :end_date %>
   </div>
 </div>
-
   <div class="uk-margin">
     <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
   </div>

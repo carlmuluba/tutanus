@@ -4,13 +4,24 @@
 		<nav class="uk-navbar">
 		<div class="uk-navbar-left">
 			<ul class="uk-navbar-nav uk-flex-left">
-				<li id="projects" class=""><%= link_to "projects", projects_path( pg: :projects), class: "" %></li>
+				<li id="projects" class="">
+					<%= link_to "projects", projects_path( pg: :projects), class: "" %>
+				</li>
 				<li id="collections" class="">
 					<%= link_to "Collections", collections_path( pg: :collections), class: "" %></li>
-				<li id="activities" class=""><%= link_to "Activities", activities_path( pg: :activities), class: "" %></li>
-				<li id="teams" class=""><%= link_to "Teams", teams_path( pg: :teams), class: "" %></li>
-				<li id="partners" class=""><%= link_to "Partners", teams_path( pg: :partners), class: "" %></li>
-				<li id="publications" class=""><%= link_to "Publications", publications_path( pg: :publications), class: "" %></li>
+				<li id="activities" class="">
+					<%= link_to "Activities", activities_path( pg: :activities), class: "" %>
+					
+				</li>
+				<li id="teams" class="">
+					<%= link_to "Teams", teams_path( pg: :teams), class: "" %>
+					</li>
+				<li id="partners" class="">
+					<%= link_to "Partners", teams_path( pg: :partners), class: "" %>
+					</li>
+				<li id="publications" class="">
+					<%= link_to "Publications", publications_path( pg: :publications), class: "" %>
+					</li>
 </ul>
 </div> 
 	<div class="uk-navbar-right">
