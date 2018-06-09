@@ -9,7 +9,7 @@
 </div>
 <!-- #START EACH PROJECT -->
     <% @collections.each do |col| %>
-<!-- #START CONTENT LINK -->
+<!-- #START CONTENT LINK --> 
       <%= link_to collection_url(id: col.id, pg: :collections), class: 'uk-inline-clip uk-transition-toggle' do %>
     <div id="bgimg" class="bg-img_<%= col.id %> uk-tile" style="height: 250px; overflow: hidden; background: url(<%= col.coll_cover %>); no-repeat center center; background-size: cover; background-color: #f8f8f8;">
     <div class="uk-transition-slide-bottom uk-position-cover uk-overlay uk-overlay-primary ">

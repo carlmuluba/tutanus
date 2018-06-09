@@ -3,14 +3,46 @@
         <a href="" class="uk-modal-close-full" style="background: transparent;" uk-icon="icon: close; ratio: 3"></a>
         <div class="uk-card uk-card-body uk-width-1-1 uk-height-viewport">
     <ul class="uk-nav-default uk-nav-center uk-nav-parent-icon" style="margin-top: 80px;" uk-nav>
-     <li>
-        <%= link_to "Projects", projects_path, class: "uk-text-lead" %>
-     </li>
-     <li><%= link_to "Collections", collections_path, class: "uk-text-lead" %></li>
-     <li><%= link_to "Activities", activities_path, class: "uk-text-lead" %></li>
-     <li><%= link_to "Teams", teams_path, class: "uk-text-lead" %></li>
-     <li><%= link_to "Partners", teams_path, class: "uk-text-lead" %></li>
-     <li><%= link_to "Publications", publications_path, class: "uk-text-lead" %></li>
+                <!-- ***************************  -->
+     <li id="projects" class="">
+        <%= link_to "projects", projects_path( pg: :projects), class: "uk-text-lead" %>
+        </li>
+                <!-- ***************************  -->
+     <% if @collections.empty? %>
+         <!-- EMPTY -->
+     <% else %>
+                <li id="collections" class="">
+                    <%= link_to "Collections", collections_path( pg: :collections), class: "uk-text-lead" %></li>
+                    <% end %>
+                <!-- ***************************  -->
+     <% if @activities.empty? %>
+         <!-- EMPTY -->
+     <% else %>
+                <li id="activities" class="">
+                    <%= link_to "Activities", activities_path( pg: :activities), class: "uk-text-lead" %></li>
+                    <% end %>
+                <!-- ***************************  -->
+     <% if @teams.empty? %>
+         <!-- EMPTY -->
+     <% else %>
+                <li id="teams" class="">
+                    <%= link_to "Teams", teams_path( pg: :teams), class: "uk-text-lead" %></li>
+            <% end %>
+                <!-- ***************************  -->
+     <% if @partners.empty? %>
+         <!-- EMPTY -->
+     <% else %>
+                <li id="partners" class="">
+                    <%= link_to "Partners", partners_path( pg: :partners), class: "uk-text-lead" %></li>
+    <% end %>
+                <!-- ***************************  -->
+     <% if @publications.empty? %>
+         <!-- EMPTY -->
+     <% else %>
+                <li id="publications" class="">
+                    <%= link_to "Publications", publications_path( pg: :publications), class: "uk-text-lead" %></li>
+                    <% end %>
+                <!-- ***************************  -->
     </ul>
 </div>
     </div>

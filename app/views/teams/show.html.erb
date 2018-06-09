@@ -1,10 +1,10 @@
  <%= render "shared/navigation/topnav_fixed" %>
   <!-- #START TEAM INFORMATION -->
  <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
-<% if @project.empty? %>
+<% if @project.exists? %>
   <div class="uk-column-1-1 uk-margin-medium-top">
 <!-- Nothing to show -->
-This Team Don't Have Any Project Yet!
+      <h5 class="uk-text-muted">Any Project Yet!</h5>
 </div>
 <% else %> 
   <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove">
@@ -19,7 +19,7 @@ This Team Don't Have Any Project Yet!
   <%= @team.tm_about %>
   </p>
 </div>
-<% if @project.empty? %>
+<% if @project.exists? %>
 <!-- Nothing to show -->
     <div class="uk-text-center uk-width-1-1">
       <h5 class="uk-text-muted">No Projects associeted</h5>
@@ -54,7 +54,7 @@ This Team Don't Have Any Project Yet!
 <li>No professionals yet</li>
 </ul>
 <% else %>
-<div class="uk-text-center uk-margin-medium-top uk-background-muted uk-padding-small">
+<div class="uk-text-center uk-margin-medium-top uk-padding-small"><!--uk-background-muted -->
     <span class="uk-text-capitalize"><%= @team.tm_name %>'s Professionals</span>
 </div>
 <ul class="uk-list uk-list-divider">

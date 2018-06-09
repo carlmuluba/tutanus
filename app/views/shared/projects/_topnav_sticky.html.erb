@@ -4,41 +4,46 @@
 		<nav class="uk-navbar">
 		<div class="uk-navbar-left">
 			<ul class="uk-navbar-nav uk-flex-left">
-     <% if @projects.empty? %>
-         <!-- EMPTY -->
-     <% else %>
-				<li id="projects" class=""><%= link_to "projects", projects_path( pg: :projects), class: "" %></li>
-				<% end %>
+				<!-- ***************************  -->
+				<li id="projects" class="">
+					<%= link_to "Projects", projects_path( pg: :projects), class: "" %>
+					</li>
+				<!-- ***************************  -->
      <% if @collections.empty? %>
          <!-- EMPTY -->
      <% else %>
 				<li id="collections" class="">
 					<%= link_to "Collections", collections_path( pg: :collections), class: "" %></li>
 					<% end %>
+				<!-- ***************************  -->
      <% if @activities.empty? %>
          <!-- EMPTY -->
      <% else %>
 				<li id="activities" class="">
 					<%= link_to "Activities", activities_path( pg: :activities), class: "" %></li>
 					<% end %>
+				<!-- ***************************  -->
      <% if @teams.empty? %>
          <!-- EMPTY -->
      <% else %>
 				<li id="teams" class="">
 					<%= link_to "Teams", teams_path( pg: :teams), class: "" %></li>
 			<% end %>
+				<!-- ***************************  -->
      <% if @partners.empty? %>
          <!-- EMPTY -->
      <% else %>
 				<li id="partners" class="">
 					<%= link_to "Partners", partners_path( pg: :partners), class: "" %></li>
 	<% end %>
+				<!-- ***************************  -->
      <% if @publications.empty? %>
          <!-- EMPTY -->
      <% else %>
 				<li id="publications" class="">
 					<%= link_to "Publications", publications_path( pg: :publications), class: "" %></li>
 					<% end %>
+				<!-- ***************************  -->
 </ul>
 </div> 
 	<div class="uk-navbar-right">
