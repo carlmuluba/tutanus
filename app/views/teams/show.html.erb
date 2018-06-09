@@ -2,9 +2,9 @@
   <!-- #START TEAM INFORMATION -->
  <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
 <% if @project.exists? %>
-  <div class="uk-column-1-1 uk-margin-medium-top">
+  <div class="uk-column-1-1 uk-margin-medium-top uk-text-center">
 <!-- Nothing to show -->
-      <h5 class="uk-text-muted">Any Project Yet!</h5>
+      <h5 class="uk-text-muted">No projects</h5>
 </div>
 <% else %> 
   <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove">
@@ -51,7 +51,7 @@
   <% if @team.professionals.empty? %>
 <!-- Nothing to show -->
 <ul class="uk-list uk-list-divider">
-<li>No professionals yet</li>
+<li>No professionals here</li>
 </ul>
 <% else %>
 <div class="uk-text-center uk-margin-medium-top uk-padding-small"><!--uk-background-muted -->
@@ -78,18 +78,18 @@
 </div>
 </div>
   <!-- #END TEAM COVER IMAGE & PROFESSIONALS -->
-<div class="uk-background-muted uk-padding-small uk-margin-medium-top uk-height-medium">
+<!--div class="uk-background-muted uk-padding-small uk-margin-medium-top uk-height-medium">
   <ul class="uk-iconnav uk-width-small uk-margin-auto-left uk-margin-auto-right">
-<%= link_to teams_path do %>
+< %= link_to teams_path do %>
  <li uk-icon="icon: arrow-left; ratio: 2"></li> 
- <% end %>
-<%= link_to edit_team_path(@team) do %> 
+ < % end %>
+< %= link_to edit_team_path(@team) do %> 
  <li uk-icon="icon: file-edit; ratio: 2"></li> 
- <% end %>
-<%= link_to @team, method: :delete, data: { confirm: 'Are you sure?' } do %>
+ < % end %>
+< %= link_to @team, method: :delete, data: { confirm: 'Are you sure?' } do %>
  <li uk-icon="icon: trash; ratio: 2"></li> 
- <% end %>
+ < % end %>
 </ul>
-</div>
+</div-->
 
  <%= render "shared/bottom_page" %>
