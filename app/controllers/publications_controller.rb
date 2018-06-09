@@ -5,12 +5,23 @@ class PublicationsController < ApplicationController
   # GET /publications.json
   def index
     @publications = Publication.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
   end
 
   # GET /publications/1
   # GET /publications/1.json
   def show
       @publication_attachments = @publication.publication_attachments.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /publications/new

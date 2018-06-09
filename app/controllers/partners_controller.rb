@@ -5,11 +5,22 @@ class PartnersController < ApplicationController
   # GET /partners.json
   def index
     @partners = Partner.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @publications = Publication.all
   end
 
   # GET /partners/1
   # GET /partners/1.json
   def show
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /partners/new

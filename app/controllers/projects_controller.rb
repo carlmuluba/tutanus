@@ -7,6 +7,11 @@ def start
     #@projects = Project.all()  
     offset = 12
     @projects = Project.limit(offset).order("RANDOM()")  
+    @collections = Collection.all()
+    @activities = Activity.all()
+    @teams = Team.all()
+    @partners = Partner.all()
+    @publications = Publication.all()
 
 end
 
@@ -23,6 +28,12 @@ def search
   # GET /projects.json
   def index
     #@projects = Project.all  
+    @collections = Collection.all()
+    @activities = Activity.all()
+    @teams = Team.all()
+    @partners = Partner.all()
+    @publications = Publication.all()
+    
    if params[:term]
     @projects = Project.where( "proj_kind = ?", params[:term]).order("RANDOM()")
      # @images = @project.images.all
@@ -36,6 +47,13 @@ def search
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @projects = Project.all()
+    @collections = Collection.all()
+    @activities = Activity.all()
+    @teams = Team.all()
+    @partners = Partner.all()
+    @publications = Publication.all()
+
     @proj_attachments = @project.proj_attachments.all
       @collections = @project.collections.all
   end

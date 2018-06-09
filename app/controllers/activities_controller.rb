@@ -5,12 +5,23 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.all
+    @collections = Collection.all
+    @projects = Project.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /activities/1
   # GET /activities/1.json
   def show
     @activity_attachments = @activity.activity_attachments.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /activities/new

@@ -3,14 +3,40 @@
         <a href="" class="uk-modal-close-full" style="background: transparent;" uk-icon="icon: close; ratio: 3"></a>
         <div class="uk-card uk-card-body uk-width-1-1 uk-height-viewport">
     <ul class="uk-nav-default uk-nav-center uk-nav-parent-icon" style="margin-top: 80px;" uk-nav>
-     <li>
-        <%= link_to "Projects", projects_path, class: "uk-text-lead" %>
-     </li>
+                <!-- ***************************  -->
+     <li><%= link_to "Projects", projects_path, class: "uk-text-lead" %></li>
+                <!-- ***************************  -->
+     
+     <% if @collections.empty? %>
+         <!-- EMPTY -->
+     <% else %>
      <li><%= link_to "Collections", collections_path, class: "uk-text-lead" %></li>
+     <% end %>
+                <!-- ***************************  -->
+     <% if @activities.empty? %>
+         <!-- EMPTY -->
+     <% else %>
      <li><%= link_to "Activities", activities_path, class: "uk-text-lead" %></li>
+     <% end %>
+                <!-- ***************************  -->
+     <% if @teams.empty? %>
+         <!-- EMPTY -->
+     <% else %>
      <li><%= link_to "Teams", teams_path, class: "uk-text-lead" %></li>
+     <% end %>
+                <!-- ***************************  -->
+     <% if @partners.empty? %>
+         <!-- EMPTY -->
+     <% else %>
      <li><%= link_to "Partners", teams_path, class: "uk-text-lead" %></li>
+     <% end %>
+                <!-- ***************************  -->
+     <% if @publications.empty? %>
+         <!-- EMPTY -->
+     <% else %>
      <li><%= link_to "Publications", publications_path, class: "uk-text-lead" %></li>
+     <% end %>
+                <!-- ***************************  -->
     </ul>
 </div>
     </div>

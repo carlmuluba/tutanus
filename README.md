@@ -25,6 +25,7 @@ Things you may want to cover:
 # Deployment instructions
 
 * HEROKU DEPLOYMENT
+  dasilva1964@outlook.com
 * git commit -a (VIM o - Esc - :wq)
 * git commit -m "commit message here"
 * git status
@@ -37,7 +38,7 @@ Things you may want to cover:
 * ...
 
 * Postgres 
-* psql -d tutanus_development -U postgres -Wp
+* psql -d tutanus_development -U postgres 
 * \d+ "proj_pictures"
 * TABLE projects 
 * rails db:schema:dump (load database from server)

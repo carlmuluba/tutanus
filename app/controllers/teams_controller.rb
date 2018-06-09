@@ -5,12 +5,23 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     @teams = Team.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
     @project = Project.where(id: @team.tm_project_id)
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /teams/new

@@ -5,12 +5,24 @@ class ItensController < ApplicationController
   # GET /itens.json
   def index
     @itens = Iten.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /itens/1
   # GET /itens/1.json
   def show
     @item_attachments = @iten.item_attachments.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
   end
 
   # GET /itens/new
