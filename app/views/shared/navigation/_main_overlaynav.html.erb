@@ -8,35 +8,35 @@
         <%= link_to "projects", projects_path( pg: :projects), class: "uk-text-lead" %>
         </li>
                 <!-- ***************************  -->
-     <% if @collections.empty? %>
+     <% if @collections.nil? %>
          <!-- EMPTY -->
      <% else %>
                 <li id="collections" class="">
                     <%= link_to "Collections", collections_path( pg: :collections), class: "uk-text-lead" %></li>
                     <% end %>
                 <!-- ***************************  -->
-     <% if @activities.empty? %>
+     <% if @activities.nil? %>
          <!-- EMPTY -->
      <% else %>
                 <li id="activities" class="">
                     <%= link_to "Activities", activities_path( pg: :activities), class: "uk-text-lead" %></li>
                     <% end %>
                 <!-- ***************************  -->
-     <% if @teams.empty? %>
+     <% if @teams.nil? %>
          <!-- EMPTY -->
      <% else %>
                 <li id="teams" class="">
                     <%= link_to "Teams", teams_path( pg: :teams), class: "uk-text-lead" %></li>
             <% end %>
                 <!-- ***************************  -->
-     <% if @partners.empty? %>
+     <% if @partners.nil? %>
          <!-- EMPTY -->
      <% else %>
                 <li id="partners" class="">
                     <%= link_to "Partners", partners_path( pg: :partners), class: "uk-text-lead" %></li>
     <% end %>
                 <!-- ***************************  -->
-     <% if @publications.empty? %>
+     <% if @publications.nil? %>
          <!-- EMPTY -->
      <% else %>
                 <li id="publications" class="">
