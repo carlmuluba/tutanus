@@ -1,9 +1,11 @@
+ 
  <% if @teams.empty? %>
     <div class="uk-text-center uk-width-1-1">
       <h5 class="uk-text-muted">No teams available</h5>
     </div>
     <% else %>
     <div class="uk-text-center uk-width-1-1">
+ <!--%= debug(@teams) %-->
     <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove">Teams on board</h5> 
 </div>
 <!-- #START DIPLAY LIST -->
@@ -19,4 +21,4 @@
     <% end %>
 <!-- #END DISPLAY LIST-->
     <% end %>
- <%= render "shared/bottom_page" %>
+ <!--%= render "shared/bottom_page" %-->

@@ -1,0 +1,39 @@
+   <div class="uk-container uk-align-center"> 
+ <% if @teams.empty? %>
+    <div class="uk-text-center uk-width-1-1">
+      <h5 class="uk-text-muted">No teams available</h5>
+    </div>
+    <% else %> 
+ <!--%= debug(@teams) %-->
+    <div class="uk-text-center uk-width-1-1">
+    <h5 class="uk-text-center uk-text-capitalize uk-text-muted uk-padding-remove-top uk-margin-remove">Teams on board</h5> 
+</div>
+    <table class="uk-table uk-table-divider">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+<!-- #START DIPLAY LIST -->
+    <% @teams.each do |team| %>
+        <tr>
+          <td>
+    <%= link_to team_url(id: team.id, pg: :teams), class: 'uk-inline-clip uk-transition-toggle' do %>
+    <%= team.tm_name %> 
+    <% end %>
+    </td>
+            <td><%= link_to 'Edit', edit_team_path(team) %></td>
+            <td><%= link_to 'Delete', 
+                 team_path(team), 
+                             method: :delete, 
+                             data: { confirm: 'Are you sure?' } %> </td>
+                              </tr>
+    <% end %>
+    </tbody>
+</table>
+<!-- #END DISPLAY LIST-->
+    <% end %>
+  </div>

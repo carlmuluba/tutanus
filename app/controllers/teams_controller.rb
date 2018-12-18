@@ -12,6 +12,17 @@ class TeamsController < ApplicationController
     @publications = Publication.all
   end
 
+  # GET /teams
+  # GET /teams.json
+  def list_teams
+    @teams = Team.all
+    @collections = Collection.all
+    @projects = Project.all
+    @activities = Activity.all
+    @partners = Partner.all
+    @publications = Publication.all
+  end
+
   # GET /teams/1
   # GET /teams/1.json
   def show

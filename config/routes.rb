@@ -44,5 +44,6 @@ Rails.application.routes.draw do
   root to: 'projects#start'
   post '/add_more_images', to: 'projects#add_more_images'
   get '/listall', to: 'projects#listall'
+  get '/list_teams', to: 'teams#list_teams'
 
 end
