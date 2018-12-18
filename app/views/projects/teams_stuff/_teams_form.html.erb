@@ -1,8 +1,8 @@
 <!-- @START THUMBS VIEW -->
    <div class="uk-child-width-1-1">
-    <% if @project.teams  %>
+    <!--% if @project.teams  %-->
 <ul class="uk-thumbnav uk-child-width-1-4 uk-margin-medium-top" uk-margin>
-                     <% if @project.teams.empty? %>
+                     <% if @project.teams.nil? %>
                     <h5 id="no-media">No Images Found</h5>
                   <% else %>
                     <% @project.teams.each do |pt| %>
@@ -15,7 +15,7 @@
     </li>
                     <% end %>
                 </ul>
-                  <% end %>
+                  <!--% end %-->
 <!-- @END THUMBS VIEW -->
 <%= form_with(model: @project, local: true) do |form| %>
 

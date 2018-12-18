@@ -1,0 +1,39 @@
+  <div class="uk-container uk-align-center"> 
+ <!-- #START CONDICTION --> 
+    <% if @projects.nil? %>
+    <div class="uk-text-center uk-width-1-1 uk-height-medium">
+      <h5 class="uk-light">No projects here</h5>
+    </div> 
+    <% else %>
+    <table class="uk-table uk-table-divider">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+<!-- #START EACH PROJECT -->
+    <% @projects.each do |project| %>
+        <tr>
+        	<td>
+      <%= link_to project_url(id: project, term: project.proj_kind, link: project.proj_kind), class: 'uk-inline-clip uk-transition-toggle' do %>
+      <h5 class="uk-card-title uk-light"><%= project.proj_title %></h5>
+    <% end %></td>
+            <td><%= project.proj_startdate %></td>
+            <td><%= project.proj_enddate %></td>
+            <td><%= link_to 'Edit', edit_project_path(project) %></td>
+            <td><%= link_to 'Delete', 
+                 project_path(project), 
+                             method: :delete, 
+                             data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<!-- #END EACH PROJECT -->
+    <% end %>
+<!-- #END CONDICTION -->
+</div>

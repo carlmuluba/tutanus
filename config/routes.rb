@@ -43,6 +43,6 @@ Rails.application.routes.draw do
 # PROJECTS STUFF
   root to: 'projects#start'
   post '/add_more_images', to: 'projects#add_more_images'
-  #post '/create', to: 'projects#create'
+  get '/listall', to: 'projects#listall'
 
 end

@@ -1,7 +1,7 @@
  <%= render "shared/navigation/topnav_fixed" %>
   <!-- #START TEAM INFORMATION -->
  <div class="uk-margin-small-left uk-margin-small-right uk-margin-small">
-<% if @project.exists? %>
+<% if @project.nil? %>
   <div class="uk-column-1-1 uk-margin-medium-top uk-text-center">
 <!-- Nothing to show -->
       <h5 class="uk-text-muted">No projects</h5>
@@ -19,7 +19,7 @@
   <%= @team.tm_about %>
   </p>
 </div>
-<% if @project.exists? %>
+<% if @project.nil? %>
 <!-- Nothing to show -->
     <div class="uk-text-center uk-width-1-1">
       <h5 class="uk-text-muted">No Projects associeted</h5>
@@ -48,13 +48,13 @@
   <div class="uk-column-1-2@s">
 <%= image_tag(@team.tm_cover.url, alt: @team.tm_name) if @team.tm_cover? %>
 <!-- #START PROFESSIONALS LIST  -->
-  <% if @team.professionals.empty? %>
+  <% if @team.professionals.nil? %>
 <!-- Nothing to show -->
 <ul class="uk-list uk-list-divider">
 <li>No professionals here</li>
 </ul>
 <% else %>
-<div class="uk-text-center uk-margin-medium-top uk-padding-small"><!--uk-background-muted -->
+<div class="uk-margin-medium-top uk-padding-small uk-text-left"><!--uk-background-muted -->
     <span class="uk-text-capitalize"><%= @team.tm_name %>'s Professionals</span>
 </div>
 <ul class="uk-list uk-list-divider">
@@ -74,7 +74,9 @@
     <% end %>
   <!-- #END PROFESSIONALS LIST  -->
 
-<p>Team created on <%= @team.tm_joined_date %></p>
+<div class="uk-margin-small-top uk-padding-small uk-text-left">
+<span>Team created on <%= @team.tm_joined_date %></span>
+</div>
 </div>
 </div>
   <!-- #END TEAM COVER IMAGE & PROFESSIONALS -->

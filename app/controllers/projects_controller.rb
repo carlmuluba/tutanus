@@ -44,6 +44,25 @@ def search
   end
   end
 
+  # GET /projects
+  # GET /projects.json
+  def listall
+    @projects = Project.all  
+    @collections = Collection.all
+    @activities = Activity.all
+    @teams = Team.all
+    @partners = Partner.all
+    @publications = Publication.all
+    
+   #if params[:term]
+   # @projects = Project.where( "proj_kind = ?", params[:term]).order("RANDOM()")
+     # @images = @project.images.all
+  #else
+  #  offset = Project.count
+  #  @projects = Project.limit(offset).order("RANDOM()")
+     # @images = @project.images.all
+  #end
+  end
   # GET /projects/1
   # GET /projects/1.json
   def show
@@ -110,7 +129,7 @@ def search
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to listall, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
