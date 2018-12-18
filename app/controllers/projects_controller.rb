@@ -144,7 +144,7 @@ def search
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-          params.require(:project).permit(:id, :proj_title, :proj_kind, :proj_about, :proj_startdate, :proj_enddate, :proj_cover, :remove_image,
+          params.require(:project).permit(:id, :proj_title, :proj_kind, :proj_about, :proj_startdate, :proj_enddate, :proj_cover, 
                 proj_attachments_attributes: [:image, :_destroy, :id, :project_id, :@original_filename, :@content_type, :@headers ],
                 teams_attributes: [:id, :tm_name, :tm_cover, :tm_joined_date, :remove_cover, :cover_cache, :tm_project_id],
                 collections_attributes: [:id, :coll_title, :coll_cover, :cover_cache, :coll_about, :coll_project_id, :coll_team_id])
