@@ -1,10 +1,11 @@
 <!-- @START THUMBS VIEW -->
    <div class="uk-child-width-1-1">
     <!--% if @project.teams  %-->
-<ul class="uk-thumbnav uk-child-width-1-4 uk-margin-medium-top" uk-margin>
-                     <% if @project.teams.nil? %>
+                     <% if @team.empty? %>
                     <h5 id="no-media">No Images Found</h5>
+<%= link_to "Create Team", new_team_path() %>
                   <% else %>
+<ul class="uk-thumbnav uk-child-width-1-4 uk-margin-medium-top" uk-margin>
                     <% @project.teams.each do |pt| %>
                       <li class="uk-text-center">
                           <%= image_tag pt.tm_cover.url, class: "uk-thumbnail", width: 100 %>
@@ -16,67 +17,33 @@
                     <% end %>
                 </ul>
                   <!--% end %-->
+<!--%= debug(@teams) %-->
 <!-- @END THUMBS VIEW -->
-<%= form_with(model: @project, local: true) do |form| %>
+                     <!--% if @team.empty? %-->
 
-<%= form.fields_for :teams, @project.teams.each do |fc| %>
-<!-- :::::::::::::::::::::::::::::::::::::: @IMAGE STUFF -->
-        <div uk-form-custom="target: true">
-<!--% if tmection.tm_cover? %>
-    < %= image_tag tmection.tm_cover.url, class: "uk-margin-small-bottom", width: 100 %>
-    <div>
-      < %= label_tag :remove_cover do %>
-        Remove image
-        < %= fc.check_box :remove_cover, onchange: 'this.form.submit();' %>
-        < % end %>
-  </div>
-      < % else %>  
-    <div>
-    </div-->      
-    <%= image_tag "", id: "team_cover_img_tag", width: 100, class: "uk-margin-small-bottom"  %>
-    <%= fc.file_field :tm_cover, id: "team_cover_img" %>
-            <%= fc.text_field :tm_cover, class: "uk-input uk-form-width-medium", placeholder: "Select Team Image", disabled: true %>  
-    <!--%= fc.hidden_field :cover_cache %-->
-<!--% end %-->      
-        </div>
-<!-- ::::::::::::::::::::::::::::::::::: END @IMAGE STUFF -->
-
-  <div class="uk-margin" uk-margin>
-    <%= fc.text_field :tm_name, id: :tm_name, class: "uk-input uk-text-capitalize", placeholder: :team_name %>
-  </div>
-
-  <div class="uk-margin cst_select">
-    <%= form.date_field :tm_joined_date, id: :tm_joined_date, class: 'uk-input uk-form-width-medium' %>
-    <%= form.label :tm_joined_date %>
-  </div>
-
-  <div class="uk-margin">    
-    <%= fc.text_area :tm_about, id: :tm_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
-</div>
-    <%= form.hidden_field :tm_project_id, value: @project.id, id: :tm_project_id %>
-<% end %>
-
-  <div class="uk-margin">
-    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-    <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
-  </div>
-<% end %>
-<!--% else %-->
-<%= link_to "edit teams", edit_team_path(tm_project_id: @project.id ) %>
+    <table class="uk-table uk-table-divider">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+<!-- #START EACH Team -->
+    <% @project.teams.each do |t| %>
+        <tr>
+          <!--td><span class="uk-card-title">< %= t.id %></span></td-->
+          <td><span class="uk-card-title"><%= t.tm_name %></span></td>
+            <td><%= link_to "Edit", edit_team_path(event: t.tm_name) %></td>
+            <td><%= link_to 'Delete', 
+                 teams_path(t.id), 
+                             method: :delete, 
+                             data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<!-- #END EACH Team -->
 <% end %>
 </div>
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#team_cover_img_tag').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#team_cover_img").change(function(){
-        readURL(this);
-    });
-</script>

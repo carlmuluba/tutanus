@@ -14,5 +14,6 @@ class Project < ApplicationRecord
     accepts_nested_attributes_for :activities, allow_destroy: true
     accepts_nested_attributes_for :collections, allow_destroy: true
 	#validates :proj_pics, file_size: { less_than: 1.megabytes }
+    
 
 end

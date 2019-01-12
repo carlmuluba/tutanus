@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :collections do
 
   end
-  resources :teams
+    resources :teams #, only: [:create, :destroy]
     resources :proj_attachments, only: [:destroy]
     resources :activity_attachments, only: [:destroy]
     resources :iten_attachments, only: [:destroy]

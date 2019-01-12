@@ -6,18 +6,18 @@
     <a class="uk-button uk-button-default uk-disabled" type="button">Project Edit</a>
     <a class="uk-button uk-button-secondary" type="button" uk-toggle="target: #imgs">Manage Images</a>
 <!-- #IF NO TEAM FOR PROJECT CONDITION -->
-    <% if @project.teams %>
+    <% if @team.empty? %>
     <a class="uk-button uk-button-secondary" type="button" uk-toggle="target: #tm">Add a Team</a>
     <% else %>
-    <a class="uk-button uk-button-secondary" type="button">Edit Team</a>
+    <a class="uk-button uk-button-secondary" uk-toggle="target: #tm" type="button">Edit Team</a>
     <% end %>
 <!-- #END IF NO TEAM CCONDITION -->
 <!-- #IF NO COLLECTION FOR PROJECT CONDITION -->
-    <% if @project.collections %>
+    <!--% if @collection.empty? %>
     <a class="uk-button uk-button-secondary" type="button" uk-toggle="target: #coll">Add Collection</a>
-    <% else %>
-    <a class="uk-button uk-button-secondary" type="button">Edit Collections</a>
-    <% end %>
+    < % else %>
+    <a class="uk-button uk-button-secondary" type="button" uk-toggle="target: #coll">Edit Collections</a>
+    < % end %-->
 <!-- #END IF NO COLLECTION CONDITION -->
 </p> 
  <!-- #START PROJECT FORM -->

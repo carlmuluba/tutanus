@@ -33,6 +33,7 @@
   <div class="uk-margin">    
     <%= form.text_area :tm_about, id: :tm_about, class: "uk-textarea", placeholder: :about, rows: 5 %>
 </div> 
+<% if @team.nil? %>
     <div class="uk-margin">
         <div uk-form-custom="target: > * > span:first-child">
 <%= form.select(:tm_project_id, @proj_options) %>
@@ -44,6 +45,19 @@
             </button>
   </div>
 </div>
+<% else %>
+
+  <div class="uk-margin">   
+        <div uk-form-custom="target: > * > span:first-child">
+    <%= form.collection_select :tm_project_id, Project.order(:proj_title), :id, :proj_title, include_blank: false %>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
+</div>
+
+<% end %>
     <!--%= form.hidden_field :tm_project_id, id: :tm_project_id %-->
 
   <div class="uk-margin">

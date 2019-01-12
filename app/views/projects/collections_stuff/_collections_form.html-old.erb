@@ -17,10 +17,11 @@
                 </ul>
                   <% end %>
 
-<!-- @END THUMBS VIEW -->
-<%= form_with(model: @project, local: true) do |f| %>
 
-<%= f.fields_for :collections, @project.collections do |fc| %>
+<!-- @END THUMBS VIEW -->
+<%= form_with(model: @project, local: true) do |form| %>
+
+<%= form.fields_for :collections, @project.collections.each do |fc| %>
 <!-- :::::::::::::::::::::::::::::::::::::: @IMAGE STUFF -->
         <div uk-form-custom="target: true">
 
@@ -54,7 +55,7 @@
 
   <div class="uk-margin">   
         <div uk-form-custom="target: > * > span:first-child">
-    <%= fc.collection_select :coll_project_id, Project.order(:proj_title), :id, :proj_title, include_blank: false %>
+    <%= form.collection_select :coll_project_id, Project.order(:proj_title), :id, :proj_title, include_blank: false %>
             <button class="uk-button uk-button-default" type="button" tabindex="-1">
                 <span></span>
                 <span uk-icon="icon: chevron-down"></span>
@@ -65,7 +66,7 @@
 <% end %>
   <div class="uk-margin">
 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-    <%= f.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
+    <%= form.submit 'Save', class: 'uk-button uk-button-primary uk-align-right' %>
   </div>
 <% end %>
 <% else %>

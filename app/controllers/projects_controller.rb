@@ -92,6 +92,7 @@ def search
       @project.collections.build(coll_project_id: @project.id)
       @team = @project.teams.all
       @project.teams.build(tm_project_id: @project.id)
+      @teams = Team.all
   end
 
   # POST /projects
