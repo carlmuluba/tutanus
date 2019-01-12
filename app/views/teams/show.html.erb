@@ -45,8 +45,8 @@
 <% end %>
   <!-- #END TEAM INFORMATION -->
   <!-- #START TEAM COVER IMAGE & PROFESSINALS-->
-  <div class="uk-column-1-2@s" style="background-color: #FFF;">
-<%= image_tag(@team.tm_cover.url, alt: @team.tm_name) if @team.tm_cover? %>
+  <div class="uk-column-1-2@s">
+<%= image_tag(@team.tm_cover.url, alt: @team.tm_name, style: "background-color: #FFF;") if @team.tm_cover? %>
 <!-- #START PROFESSIONALS LIST  -->
   <% if @team.professionals.nil? %>
 <!-- Nothing to show -->
