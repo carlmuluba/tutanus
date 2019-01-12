@@ -53,7 +53,7 @@
 <ul class="uk-list uk-list-divider">
 <li>No professionals here</li>
 </ul>
-<% else %>
+<% else %> 
 <div class="uk-margin-medium-top uk-padding-small uk-text-left"><!--uk-background-muted -->
     <span class="uk-text-capitalize"><%= @team.tm_name %>'s Professionals</span>
 </div>
@@ -61,7 +61,7 @@
       <% @team.professionals.each do |profes| %> 
     <li>
         <%= link_to professional_path(profes.id), :class => "uk-link-muted" do %>
-          <div style="max-height: 120px; overflow: hidden;">        
+          <div style="max-height: 120px; overflow: hidden; background-color: #FFF;">        
           <%= image_tag( profes.prof_cover.url, alt: 'Image', style: "") if profes.prof_cover? %>
             </div>
     <div class="uk-text-capitalize"> 
