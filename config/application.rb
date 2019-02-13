@@ -25,8 +25,8 @@ ActionMailer::Base.smtp_settings = {
  address: 'smtp.sendgrid.net',
  port: '25',
  domain: 'heroku.com',
- user_name: ENV['SENDGRID_USERNAME'],
- password: ENV['SENDGRID_PASSWORD'],
+ user_name: 'dasilva', #ENV['SENDGRID_USERNAME'],
+ password: '3kmdeaveiro',#ENV['SENDGRID_PASSWORD'],
  authentication: 'plain',
  enable_starttls_auto: true
 }
